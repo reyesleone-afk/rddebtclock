@@ -1,0 +1,9 @@
+{
+    "name": "RDDDebtClock",
+    "short_name": "RDDC",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f0f8ff",
+    "theme_color": "#004080",
+    "icons": [{ "src": "https://via.placeholder.com/192?text=RD", "sizes": "192x192", "type": "image/png" }]
+}
