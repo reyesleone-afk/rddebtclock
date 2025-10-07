@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDDDebtClock - Economía RD en Tiempo Real</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header>
+        <h1>RDDDebtClock</h1>
+        <p>La economía de RD, tic-tac a tic-tac 🇩🇴</p>
+    </header>
+
+    <main class="dashboard">
+        <!-- Contador Deuda como USDebtClock -->
+        <div class="counter-card">
+            <h2>Deuda Pública Total (SPNF)</h2>
+            <div id="debt-counter" class="counter">US$60,182,900,000</div>
+            <p>Per cápita: ~US$5,360 | % del PIB: 46.9%</p>
+            <small>Fuente: DGCP (Ago 2025)</small>
+        </div>
+
+        <!-- PIB -->
+        <div class="counter-card">
+            <h2>PIB Nominal Anual</h2>
+            <div id="gdp-counter" class="counter">US$128,424,400,000</div>
+            <p>Crecimiento proyectado 2025: +4.75%</p>
+            <small>Fuente: BCRD/MEPyD (Est. 2025)</small>
+        </div>
+
+        <div class="counter-card">
+            <h2>Inflación Interanual</h2>
+            <div id="inflation-counter" class="counter">3.7%</div>
+            <p>Tasa BCRD: 5.50% (Sept 2025)</p>
+            <small>Fuente: BCRD (Ago 2025)</small>
+        </div>
+
+        <!-- Viz como Voronoi -->
+        <div class="viz-section">
+            <h2>Visualización: Crecimiento PIB por Trimestre (2025)</h2>
+            <canvas id="pib-chart" width="400" height="200"></canvas>
+        </div>
+    </main>
+
+    <footer>
+        <p>Actualizado: Octubre 2025 | <a href="viz.html">Más Visualizaciones</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
