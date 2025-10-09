@@ -1,24 +1,29 @@
 body { 
-    font-family: 'Courier New', monospace; /* Fuente como reloj digital */
-    background: #000; /* Fondo negro para drama, como DebtClock */
-    color: #fff; 
+    font-family: 'Courier New', monospace; 
+    background: #FFFFFF; /* Blanco como la bandera */
+    color: #000; 
     margin: 0; 
     padding: 0; 
     overflow-x: hidden;
 }
 header { 
     text-align: center; 
-    background: #001f3f; /* Azul oscuro */
-    color: #fff; 
+    background: linear-gradient(90deg, #CE1126 33%, #002D72 33%, #002D72 66%, #CE1126 66%); /* Rojo y azul en franjas */
+    color: #FFFFFF; 
     padding: 20px; 
     margin: 0;
 }
 header h1 { font-size: 2.5em; margin: 0; }
 header p { font-size: 1.2em; margin: 5px 0; }
+.live-clock { 
+    font-size: 1.5em; 
+    margin-top: 10px; 
+    color: #FFD700; /* Dorado para resaltar, como el escudo */
+}
 
 .dashboard { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 columnas en desktop, 1 en móvil */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 20px; 
     padding: 20px; 
     max-width: 1200px; 
@@ -27,36 +32,36 @@ header p { font-size: 1.2em; margin: 5px 0; }
 .column { display: flex; flex-direction: column; gap: 20px; }
 
 .counter-card { 
-    background: #111; 
+    background: #F5F5F5; /* Gris claro como acento */
     border: 2px solid #333; 
     border-radius: 5px; 
     padding: 15px; 
     text-align: center; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-.counter-card.debt { border-color: #ff0000; background: #220000; } /* Rojo para deuda */
-.counter-card.gdp { border-color: #00ff00; background: #002200; } /* Verde para PIB */
-.counter-card.inflation { border-color: #ffaa00; background: #332200; } /* Naranja para inflación */
+.counter-card.debt { border-color: #CE1126; background: #FFE6E6; color: #CE1126; } /* Rojo suave */
+.counter-card.gdp { border-color: #002D72; background: #E6F0FA; color: #002D72; } /* Azul suave */
+.counter-card.inflation { border-color: #FFA500; background: #FFF3E6; color: #FFA500; } /* Naranja suave */
+.counter-card.remesas { border-color: #FFD700; background: #FFF9E6; color: #FFD700; } /* Dorado suave */
+.counter-card.interest { border-color: #006400; background: #E6FFE6; color: #006400; } /* Verde suave */
 
 label { 
     display: block; 
     font-size: 0.9em; 
     text-transform: uppercase; 
-    color: #ccc; 
     margin-bottom: 5px;
 }
 .counter { 
-    font-size: 3em; /* Gigante como DebtClock */
+    font-size: 3em; 
     font-weight: bold; 
     margin: 10px 0; 
     line-height: 1;
-    min-height: 1em; /* Para animación */
+    min-height: 1em;
 }
-.counter::after { content: ''; display: block; height: 0.5em; } /* Espacio para animar */
+.counter::after { content: ''; display: block; height: 0.5em; }
 
 .explain { 
     font-size: 0.7em; 
-    color: #aaa; 
     margin: 5px 0 0; 
     line-height: 1.2;
 }
@@ -64,14 +69,14 @@ label {
 footer { 
     text-align: center; 
     padding: 10px; 
-    background: #001f3f; 
+    background: #002D72; 
     font-size: 0.8em; 
-    color: #ccc;
+    color: #FFFFFF;
 }
-footer a { color: #fff; text-decoration: none; }
+footer a { color: #FFD700; text-decoration: none; }
 
-/* Responsive para móvil */
 @media (max-width: 768px) {
     .dashboard { grid-template-columns: 1fr; }
     .counter { font-size: 2em; }
+    .live-clock { font-size: 1.2em; }
 }
