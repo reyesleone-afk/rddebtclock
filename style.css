@@ -38,12 +38,15 @@ header p { font-size: 1.2em; margin: 5px 0; }
     padding: 15px; 
     text-align: center; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    min-width: 250px; /* Ancho mínimo para evitar colapso */
+    word-break: break-all; /* Rompe palabras largas si necesario */
+    overflow-wrap: break-word; /* Asegura que el texto no sobresalga */
 }
-.counter-card.debt { border-color: #CE1126; background: #FFE6E6; color: #CE1126; } /* Rojo suave */
-.counter-card.gdp { border-color: #002D72; background: #E6F0FA; color: #002D72; } /* Azul suave */
-.counter-card.inflation { border-color: #FFA500; background: #FFF3E6; color: #FFA500; } /* Naranja suave */
-.counter-card.remesas { border-color: #FFD700; background: #FFF9E6; color: #FFD700; } /* Dorado suave */
-.counter-card.tourism { border-color: #1E90FF; background: #E6F3FF; color: #1E90FF; } /* Azul cielo para turismo */
+.counter-card.debt { border-color: #CE1126; background: #FFE6E6; color: #CE1126; }
+.counter-card.gdp { border-color: #002D72; background: #E6F0FA; color: #002D72; }
+.counter-card.inflation { border-color: #FFA500; background: #FFF3E6; color: #FFA500; }
+.counter-card.remesas { border-color: #FFD700; background: #FFF9E6; color: #FFD700; }
+.counter-card.tourism { border-color: #1E90FF; background: #E6F3FF; color: #1E90FF; }
 
 label { 
     display: block; 
@@ -52,11 +55,12 @@ label {
     margin-bottom: 5px;
 }
 .counter { 
-    font-size: 3em; 
+    font-size: 2.5em; /* Reducido un poco para evitar sobresaliente */
     font-weight: bold; 
     margin: 10px 0; 
     line-height: 1;
     min-height: 1em;
+    word-break: break-all; /* Asegura que el número se ajuste */
 }
 .counter::after { content: ''; display: block; height: 0.5em; }
 
@@ -64,6 +68,7 @@ label {
     font-size: 0.7em; 
     margin: 5px 0 0; 
     line-height: 1.2;
+    word-break: break-word; /* Ajusta texto largo */
 }
 
 footer { 
@@ -77,6 +82,6 @@ footer a { color: #FFD700; text-decoration: none; }
 
 @media (max-width: 768px) {
     .dashboard { grid-template-columns: 1fr; }
-    .counter { font-size: 2em; }
+    .counter { font-size: 1.8em; } /* Más pequeño en móvil */
     .live-clock { font-size: 1.2em; }
 }
