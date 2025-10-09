@@ -12,7 +12,7 @@ function animateCounter(id, target, duration = 3000, isCurrency = true, decimals
         let display;
         if (isCurrency) {
             display = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'USD' }).format(current);
-        } else if (id.includes('growth') || id.includes('inflation') || id.includes('rate')) {
+        } else if (id.includes('growth') || id.includes('inflation')) {
             display = current.toFixed(decimals) + '%';
         } else {
             display = Intl.NumberFormat('es-DO').format(current);
@@ -33,8 +33,8 @@ function updateLiveClock() {
     const options = { hour: '2-digit', minute: '2-digit', hour12: true, timeZoneName: 'short' };
     clock.textContent = now.toLocaleTimeString('en-US', options).replace('GMT', 'EDT');
 }
-setInterval(updateLiveClock, 1000); // Actualiza cada segundo
-updateLiveClock(); // Inicia inmediatamente
+setInterval(updateLiveClock, 1000);
+updateLiveClock();
 
 // Actualiza y anima al cargar
 document.addEventListener('DOMContentLoaded', function() {
@@ -51,5 +51,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Otros
     animateCounter('inflation', 3.7, 1500, false, 1);
     animateCounter('remesas', 10200000000, 3500, true);
-    animateCounter('interest-rate', 5.5, 1500, false, 2);
+    animateCounter('turismo', 21100000000, 3500, true); // Nuevo: Turismo
 });
