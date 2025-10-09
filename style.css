@@ -43,7 +43,7 @@ header p { font-size: 1.2em; margin: 5px 0; }
 .counter-card.gdp { border-color: #002D72; background: #E6F0FA; color: #002D72; } /* Azul suave */
 .counter-card.inflation { border-color: #FFA500; background: #FFF3E6; color: #FFA500; } /* Naranja suave */
 .counter-card.remesas { border-color: #FFD700; background: #FFF9E6; color: #FFD700; } /* Dorado suave */
-.counter-card.interest { border-color: #006400; background: #E6FFE6; color: #006400; } /* Verde suave */
+.counter-card.tourism { border-color: #1E90FF; background: #E6F3FF; color: #1E90FF; } /* Azul cielo para turismo */
 
 label { 
     display: block; 
