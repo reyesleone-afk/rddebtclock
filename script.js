@@ -1,4 +1,4 @@
-// Función para animar contadores (tic-tac estilo DebtClock)
+// Función para animar contadores con formato compacto
 function animateCounter(id, target, duration = 3000, isCurrency = true, decimals = 0) {
     const elem = document.getElementById(id);
     if (!elem) return;
@@ -11,7 +11,11 @@ function animateCounter(id, target, duration = 3000, isCurrency = true, decimals
         
         let display;
         if (isCurrency) {
-            display = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'USD' }).format(current);
+            const absValue = Math.abs(current);
+            if (absValue >= 1e12) display = (current / 1e12).toFixed(1) + 'T'; // Trillones (si llega)
+            else if (absValue >= 1e9) display = (current / 1e9).toFixed(1) + 'B'; // Billones
+            else if (absValue >= 1e6) display = (current / 1e6).toFixed(1) + 'M'; // Millones
+            else display = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'USD' }).format(current);
         } else if (id.includes('growth') || id.includes('inflation')) {
             display = current.toFixed(decimals) + '%';
         } else {
@@ -51,5 +55,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Otros
     animateCounter('inflation', 3.7, 1500, false, 1);
     animateCounter('remesas', 10200000000, 3500, true);
-    animateCounter('turismo', 21100000000, 3500, true); // Nuevo: Turismo
+    animateCounter('turismo', 21100000000, 3500, true);
 });
