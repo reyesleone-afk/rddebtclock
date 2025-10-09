@@ -1,48 +1,46 @@
-// Contador animado (simula aumento basado en tasa real ~0.5% mensual)
-function animateCounter(id, target, duration = 2000) {
+// Función para animar contadores (tic-tac estilo DebtClock)
+function animateCounter(id, target, duration = 3000, isCurrency = true, decimals = 0) {
     const elem = document.getElementById(id);
-    const start = parseFloat(elem.textContent.replace(/[^\d.-]/g, '')) || 0;
-    const increment = (target - start) / (duration / 16);
+    if (!elem) return;
+    const start = 0; // Empieza de 0 para efecto dramático
+    const increment = (target - start) / (duration / 16); // ~60fps
     let current = start;
     const timer = setInterval(() => {
         current += increment;
-        if (Math.abs(current - target) < Math.abs(increment)) current = target;
-        if (id === 'debt-counter' || id === 'gdp-counter') {
-            elem.textContent = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'USD' }).format(current);
+        if (current >= target) current = target;
+        
+        let display;
+        if (isCurrency) {
+            display = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'USD' }).format(current);
+        } else if (id.includes('growth') || id.includes('inflation') || id.includes('rate')) {
+            display = current.toFixed(decimals) + '%';
         } else {
-            elem.textContent = current.toFixed(1) + '%';
+            display = Intl.NumberFormat('es-DO').format(current);
         }
-        if (current >= target) clearInterval(timer);
+        elem.textContent = display;
+        
+        if (current >= target) {
+            clearInterval(timer);
+            // Pequeña pausa y reinicio sutil para "real-time"
+            setTimeout(() => animateCounter(id, target + (target * 0.001), duration / 2, isCurrency, decimals), 5000);
+        }
     }, 16);
 }
 
-// Actualiza datos (manual por ahora; después automatizamos)
-async function updateData() {
-    // Deuda (de DGCP)
-    animateCounter('debt-counter', 60182900000);
+// Actualiza y anima al cargar
+document.addEventListener('DOMContentLoaded', function() {
+    // Deuda
+    animateCounter('debt-total', 60500000000, 4000, true);
+    animateCounter('debt-per-capita', 5350, 2000, true);
+    animateCounter('debt-gdp', 46.9, 2000, false, 1);
     
-    // PIB (est. BCRD)
-    animateCounter('gdp-counter', 128424400000);
+    // PIB
+    animateCounter('gdp-total', 128500000000, 4000, true);
+    animateCounter('gdp-growth', 4.8, 2000, false, 1);
+    animateCounter('population', 11300000, 3000, false);
     
-    // Inflación (BCRD Ago)
-    document.getElementById('inflation-counter').textContent = '3.7%';
-
-    // Chart PIB trimestres 2025 (datos preliminares BCRD)
-    const ctx = document.getElementById('pib-chart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Ene-Mar', 'Abr-Jun', 'Jul-Sep', 'Oct-Dic (est.)'],
-            datasets: [{ label: 'PIB (miles millones US$)', data: [30.5, 32.1, 32.8, 33.0], borderColor: '#004080' }]
-        },
-        options: { responsive: true, scales: { y: { beginAtZero: false } } }
-    });
-}
-
-// Inicia
-document.addEventListener('DOMContentLoaded', updateData);
-
-// PWA básico
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(() => {}); // Ignora si no hay sw.js aún
-}
+    // Otros
+    animateCounter('inflation', 3.7, 1500, false, 1);
+    animateCounter('remesas', 10200000000, 3500, true);
+    animateCounter('interest-rate', 5.5, 1500, false, 2);
+});
