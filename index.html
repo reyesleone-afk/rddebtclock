@@ -10,7 +10,8 @@
 <body>
     <header>
         <h1>RDDebtClock 🇩🇴</h1>
-        <p>El reloj de la economía dominicana: Deuda, PIB y más – Actualizado en tiempo real</p>
+        <p>El reloj de la economía dominicana - Actualizado en tiempo real</p>
+        <div id="live-clock" class="live-clock">08:54 AM EDT</div>
     </header>
 
     <main class="dashboard">
@@ -22,13 +23,13 @@
                 <p class="explain">El total que debe el gobierno de RD (Fuente: DGCP, Oct 2025)</p>
             </div>
 
-            <div class="counter-card">
+            <div class="counter-card debt">
                 <label>DEUDA POR HABITANTE</label>
                 <div id="debt-per-capita" class="counter">US$5,350</div>
                 <p class="explain">Tu parte aproximada si divides la deuda entre 11.3 millones de dominicanos</p>
             </div>
 
-            <div class="counter-card">
+            <div class="counter-card debt">
                 <label>DEUDA % DEL PIB</label>
                 <div id="debt-gdp" class="counter">46.9%</div>
                 <p class="explain">Cuán grande es la deuda comparada con toda la economía de RD</p>
@@ -43,13 +44,13 @@
                 <p class="explain">El tamaño total de la economía dominicana (Fuente: BCRD, Est. 2025)</p>
             </div>
 
-            <div class="counter-card">
+            <div class="counter-card gdp">
                 <label>CRECIMIENTO PIB</label>
                 <div id="gdp-growth" class="counter">+4.8%</div>
                 <p class="explain">Cuánto creció la economía este año (buena noticia para empleos y salarios)</p>
             </div>
 
-            <div class="counter-card">
+            <div class="counter-card gdp">
                 <label>POBLACIÓN TOTAL</label>
                 <div id="population" class="counter">11,300,000</div>
                 <p class="explain">Número de habitantes en RD (incluye a todos, para calcular per cápita)</p>
@@ -64,13 +65,13 @@
                 <p class="explain">Cuánto suben los precios al año (baja = más poder de compra para ti)</p>
             </div>
 
-            <div class="counter-card">
+            <div class="counter-card remesas">
                 <label>REMESAS ANUALES</label>
                 <div id="remesas" class="counter">US$10,200,000,000</div>
                 <p class="explain">Dinero que envían dominicanos en el exterior (motor clave de la economía)</p>
             </div>
 
-            <div class="counter-card">
+            <div class="counter-card interest">
                 <label>TASA DE INTERÉS BCRD</label>
                 <div id="interest-rate" class="counter">5.50%</div>
                 <p class="explain">La tasa base del Banco Central (afecta préstamos y ahorros)</p>
@@ -79,7 +80,7 @@
     </main>
 
     <footer>
-        <p>Actualizado: 8 de Octubre 2025 | Fuentes: BCRD, DGCP, MEPyD | <a href="https://www.bancentral.gov.do/">Más Datos</a></p>
+        <p>Actualizado: 9 de Octubre 2025 | Fuentes: BCRD, DGCP, MEPyD | <a href="https://www.bancentral.gov.do/">Más Datos</a></p>
     </footer>
 
     <script src="script.js"></script>
