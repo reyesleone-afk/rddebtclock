@@ -1,5 +1,5 @@
 // Función para animar contadores con formato compacto
-function animateCounter(id, target, duration = 3000, isCurrency = true, decimals = 0) {
+function animateCounter(id, target, duration = 3000, isCurrency = true, decimals = 0, suffix = '') {
     const elem = document.getElementById(id);
     if (!elem) return;
     const start = 0;
@@ -12,12 +12,14 @@ function animateCounter(id, target, duration = 3000, isCurrency = true, decimals
         let display;
         if (isCurrency) {
             const absValue = Math.abs(current);
-            if (absValue >= 1e12) display = (current / 1e12).toFixed(1) + 'T'; // Trillones (si llega)
+            if (absValue >= 1e12) display = (current / 1e12).toFixed(1) + 'T'; // Trillones
             else if (absValue >= 1e9) display = (current / 1e9).toFixed(1) + 'B'; // Billones
             else if (absValue >= 1e6) display = (current / 1e6).toFixed(1) + 'M'; // Millones
             else display = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'USD' }).format(current);
         } else if (id.includes('growth') || id.includes('inflation')) {
             display = current.toFixed(decimals) + '%';
+        } else if (id.includes('usd') || id.includes('eur')) {
+            display = current.toFixed(2) + suffix; // DOP con 2 decimales
         } else {
             display = Intl.NumberFormat('es-DO').format(current);
         }
@@ -25,7 +27,7 @@ function animateCounter(id, target, duration = 3000, isCurrency = true, decimals
         
         if (current >= target) {
             clearInterval(timer);
-            setTimeout(() => animateCounter(id, target + (target * 0.001), duration / 2, isCurrency, decimals), 5000);
+            setTimeout(() => animateCounter(id, target + (target * 0.001), duration / 2, isCurrency, decimals, suffix), 5000);
         }
     }, 16);
 }
@@ -55,5 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Otros
     animateCounter('inflation', 3.7, 1500, false, 1);
     animateCounter('remesas', 10200000000, 3500, true);
-    animateCounter('turismo', 21100000000, 3500, true);
+    
+    // Nuevos: Tipos de cambio
+    animateCounter('usd-rate', 60.50, 2000, false, 2, ' DOP');
+    animateCounter('eur-rate', 65.00, 2000, false, 2, ' DOP');
 });
