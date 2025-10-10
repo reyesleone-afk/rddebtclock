@@ -42,11 +42,11 @@ header p { font-size: 1.2em; margin: 5px 0; }
     word-break: break-all; /* Rompe palabras largas si necesario */
     overflow-wrap: break-word; /* Asegura que el texto no sobresalga */
 }
-.counter-card.debt { border-color: #CE1126; background: #FFE6E6; color: #CE1126; }
-.counter-card.gdp { border-color: #002D72; background: #E6F0FA; color: #002D72; }
-.counter-card.inflation { border-color: #FFA500; background: #FFF3E6; color: #FFA500; }
-.counter-card.remesas { border-color: #FFD700; background: #FFF9E6; color: #FFD700; }
-.counter-card.tourism { border-color: #1E90FF; background: #E6F3FF; color: #1E90FF; }
+.counter-card.debt { border-color: #CE1126; background: #FFE6E6; color: #CE1126; } /* Rojo suave */
+.counter-card.gdp { border-color: #002D72; background: #E6F0FA; color: #002D72; } /* Azul suave */
+.counter-card.inflation { border-color: #FFA500; background: #FFF3E6; color: #FFA500; } /* Naranja suave */
+.counter-card.remesas { border-color: #FFD700; background: #FFF9E6; color: #FFD700; } /* Dorado suave */
+.counter-card.exchange { border-color: #32CD32; background: #E6FFE6; color: #32CD32; } /* Verde para monedas */
 
 label { 
     display: block; 
