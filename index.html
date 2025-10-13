@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RDDebtClock - Economía RD en Tiempo Real</title>
+    <title>RDDDebtClock - Economía RD en Tiempo Real</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <header>
-        <h1>RDDebtClock 🇩🇴</h1>
+        <h1>RDDDebtClock 🇩🇴</h1>
         <p>El reloj de la economía dominicana - Actualizado en tiempo real</p>
-        <div id="live-clock" class="live-clock">10:00 AM EDT</div>
+        <div id="live-clock" class="live-clock">10:48 AM EDT</div>
     </header>
 
     <main class="dashboard">
@@ -22,13 +23,11 @@
                 <div id="debt-total" class="counter">US$60,500,000,000</div>
                 <p class="explain">El total que debe el gobierno de RD (Fuente: DGCP, Oct 2025)</p>
             </div>
-
             <div class="counter-card debt">
                 <label>DEUDA POR HABITANTE</label>
                 <div id="debt-per-capita" class="counter">US$5,350</div>
                 <p class="explain">Tu parte aproximada si divides la deuda entre 11.3 millones de dominicanos</p>
             </div>
-
             <div class="counter-card debt">
                 <label>DEUDA % DEL PIB</label>
                 <div id="debt-gdp" class="counter">46.9%</div>
@@ -43,13 +42,11 @@
                 <div id="gdp-total" class="counter">US$128,500,000,000</div>
                 <p class="explain">El tamaño total de la economía dominicana (Fuente: BCRD, Est. 2025)</p>
             </div>
-
             <div class="counter-card gdp">
                 <label>CRECIMIENTO PIB</label>
                 <div id="gdp-growth" class="counter">+4.8%</div>
-                <p class="explain">Cuánto creció la economía este año (buena noticia para empleos y salarios)</p>
+                <p class="explain">Cuánto creció la economía este año (Fuente: BCRD, 2025)</p>
             </div>
-
             <div class="counter-card gdp">
                 <label>POBLACIÓN TOTAL</label>
                 <div id="population" class="counter">11,300,000</div>
@@ -62,31 +59,55 @@
             <div class="counter-card inflation">
                 <label>INFLACIÓN ANUAL</label>
                 <div id="inflation" class="counter">3.7%</div>
-                <p class="explain">Cuánto suben los precios al año (baja = más poder de compra para ti)</p>
+                <p class="explain">Aumento anual de precios (Fuente: BCRD, Oct 2025)</p>
             </div>
-
             <div class="counter-card remesas">
                 <label>REMESAS ANUALES</label>
                 <div id="remesas" class="counter">US$10,200,000,000</div>
-                <p class="explain">Dinero que envían dominicanos en el exterior (motor clave de la economía)</p>
+                <p class="explain">Dinero enviado por dominicanos en el exterior (Fuente: BCRD, 2025)</p>
             </div>
-
             <div class="counter-card exchange">
                 <label>1 USD = DOP</label>
                 <div id="usd-rate" class="counter">60.50</div>
-                <p class="explain">Tipo de cambio promedio (Compra 59.85 / Venta 61.15, Fuente: BCRD, 10/10/2025)</p>
+                <p class="explain">Tipo de cambio promedio (Compra 59.85 / Venta 61.15, Fuente: BCRD, 13/10/2025)</p>
             </div>
-
             <div class="counter-card exchange">
                 <label>1 EUR = DOP</label>
                 <div id="eur-rate" class="counter">65.00</div>
-                <p class="explain">Tipo de cambio promedio (Compra 64.20 / Venta 65.80, Fuente: BCRD, 10/10/2025)</p>
+                <p class="explain">Tipo de cambio promedio (Compra 64.20 / Venta 65.80, Fuente: BCRD, 13/10/2025)</p>
+            </div>
+        </div>
+
+        <!-- Columna 4: Nuevas Métricas -->
+        <div class="column">
+            <div class="counter-card unemployment">
+                <label>TASA DE DESEMPLEO</label>
+                <div id="unemployment-rate" class="counter">7.4%</div>
+                <p class="explain">Porcentaje de personas sin trabajo (Fuente: MEPyD, Oct 2025)</p>
+            </div>
+            <div class="counter-card reserves">
+                <label>RESERVAS INTERNACIONALES</label>
+                <div id="reserves" class="counter">US$15,300,000,000</div>
+                <p class="explain">Reservas para emergencias y pagos externos (Fuente: BCRD, Oct 2025)</p>
+            </div>
+            <div class="counter-card investment">
+                <label>INVERSION EXTRANJERA DIRECTA</label>
+                <div id="ied" class="counter">US$4,050,000,000</div>
+                <p class="explain">Inversión extranjera anual (Fuente: BCRD, Oct 2025)</p>
+            </div>
+            <div class="counter-card inflation-monthly">
+                <label>IPC MENSUAL</label>
+                <div id="ipc-monthly" class="counter">0.31%</div>
+                <p class="explain">Aumento de precios este mes (Fuente: BCRD, Oct 2025)</p>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>Actualizado: 10 de Octubre 2025 | Fuentes: BCRD, DGCP, MEPyD | <a href="https://www.bancentral.gov.do/">Más Datos</a></p>
+        <p>Actualizado: 13 de Octubre 2025 | Fuentes: BCRD, DGCP, MEPyD | <a href="https://www.bancentral.gov.do/">Más Datos</a></p>
+        <a href="https://bvrd.com.do/" target="_blank" class="bvrd-link" title="Explora la Bolsa de Valores de RD">
+            <i class="fas fa-chart-line"></i> Mercado de Valores RD
+        </a>
     </footer>
 
     <script src="script.js"></script>
