@@ -12,14 +12,14 @@ function animateCounter(id, target, duration = 3000, isCurrency = true, decimals
         let display;
         if (isCurrency) {
             const absValue = Math.abs(current);
-            if (absValue >= 1e12) display = (current / 1e12).toFixed(1) + 'T'; // Trillones
-            else if (absValue >= 1e9) display = (current / 1e9).toFixed(1) + 'B'; // Billones
-            else if (absValue >= 1e6) display = (current / 1e6).toFixed(1) + 'M'; // Millones
+            if (absValue >= 1e12) display = (current / 1e12).toFixed(1) + 'T';
+            else if (absValue >= 1e9) display = (current / 1e9).toFixed(1) + 'B';
+            else if (absValue >= 1e6) display = (current / 1e6).toFixed(1) + 'M';
             else display = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'USD' }).format(current);
-        } else if (id.includes('growth') || id.includes('inflation')) {
+        } else if (id.includes('growth') || id.includes('inflation') || id.includes('unemployment') || id.includes('ipc')) {
             display = current.toFixed(decimals) + '%';
         } else if (id.includes('usd') || id.includes('eur')) {
-            display = current.toFixed(2) + suffix; // DOP con 2 decimales
+            display = current.toFixed(2) + ' DOP';
         } else {
             display = Intl.NumberFormat('es-DO').format(current);
         }
@@ -57,8 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Otros
     animateCounter('inflation', 3.7, 1500, false, 1);
     animateCounter('remesas', 10200000000, 3500, true);
-    
-    // Nuevos: Tipos de cambio
     animateCounter('usd-rate', 60.50, 2000, false, 2, ' DOP');
     animateCounter('eur-rate', 65.00, 2000, false, 2, ' DOP');
+    
+    // Nuevas métricas
+    animateCounter('unemployment-rate', 7.4, 1500, false, 1, '%');
+    animateCounter('reserves', 15300000000, 3000, true);
+    animateCounter('ied', 4050000000, 3000, true);
+    animateCounter('ipc-monthly', 0.31, 1500, false, 2, '%');
 });
