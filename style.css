@@ -23,10 +23,10 @@ header p { font-size: 1.2em; margin: 5px 0; }
 
 .dashboard { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas */
     gap: 20px; 
     padding: 20px; 
-    max-width: 1200px; 
+    max-width: 1400px; /* Aumentado para 4 columnas */
     margin: 0 auto;
 }
 .column { display: flex; flex-direction: column; gap: 20px; }
@@ -38,15 +38,19 @@ header p { font-size: 1.2em; margin: 5px 0; }
     padding: 15px; 
     text-align: center; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    min-width: 250px; /* Ancho mínimo para evitar colapso */
-    word-break: break-all; /* Rompe palabras largas si necesario */
-    overflow-wrap: break-word; /* Asegura que el texto no sobresalga */
+    min-width: 250px; /* Ancho mínimo */
+    word-break: break-all; 
+    overflow-wrap: break-word;
 }
 .counter-card.debt { border-color: #CE1126; background: #FFE6E6; color: #CE1126; } /* Rojo suave */
 .counter-card.gdp { border-color: #002D72; background: #E6F0FA; color: #002D72; } /* Azul suave */
 .counter-card.inflation { border-color: #FFA500; background: #FFF3E6; color: #FFA500; } /* Naranja suave */
 .counter-card.remesas { border-color: #FFD700; background: #FFF9E6; color: #FFD700; } /* Dorado suave */
 .counter-card.exchange { border-color: #32CD32; background: #E6FFE6; color: #32CD32; } /* Verde para monedas */
+.counter-card.unemployment { border-color: #FFD700; background: #FFF9E6; color: #FFD700; } /* Dorado para empleo */
+.counter-card.reserves { border-color: #4682B4; background: #E6F0FA; color: #4682B4; } /* Azul acero para reservas */
+.counter-card.investment { border-color: #9ACD32; background: #F0FFF0; color: #9ACD32; } /* Verde amarillo para IED */
+.counter-card.inflation-monthly { border-color: #FFA500; background: #FFF3E6; color: #FFA500; } /* Naranja para IPC mensual */
 
 label { 
     display: block; 
@@ -55,12 +59,12 @@ label {
     margin-bottom: 5px;
 }
 .counter { 
-    font-size: 2.5em; /* Reducido un poco para evitar sobresaliente */
+    font-size: 2.5em; 
     font-weight: bold; 
     margin: 10px 0; 
     line-height: 1;
     min-height: 1em;
-    word-break: break-all; /* Asegura que el número se ajuste */
+    word-break: break-all;
 }
 .counter::after { content: ''; display: block; height: 0.5em; }
 
@@ -68,7 +72,7 @@ label {
     font-size: 0.7em; 
     margin: 5px 0 0; 
     line-height: 1.2;
-    word-break: break-word; /* Ajusta texto largo */
+    word-break: break-word;
 }
 
 footer { 
@@ -79,9 +83,19 @@ footer {
     color: #FFFFFF;
 }
 footer a { color: #FFD700; text-decoration: none; }
+.bvrd-link { 
+    display: inline-block; 
+    margin-top: 5px; 
+    color: #FFD700; 
+    text-decoration: none;
+}
+.bvrd-link i { margin-right: 5px; }
 
+@media (max-width: 1024px) {
+    .dashboard { grid-template-columns: repeat(2, 1fr); } /* Dos columnas en tablet */
+}
 @media (max-width: 768px) {
-    .dashboard { grid-template-columns: 1fr; }
-    .counter { font-size: 1.8em; } /* Más pequeño en móvil */
+    .dashboard { grid-template-columns: 1fr; } /* Una columna en móvil */
+    .counter { font-size: 1.8em; }
     .live-clock { font-size: 1.2em; }
 }
