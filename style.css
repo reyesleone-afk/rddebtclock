@@ -1,77 +1,138 @@
+/* MEJORA 1: Centralización con Variables (CSS Custom Properties) */
+:root {
+    --font-main: 'Roboto Mono', 'Courier New', monospace; /* Fuente más moderna como primera opción */
+    --color-background: #000;
+    --color-text: #fff;
+    --color-text-muted: #ccc;
+    --color-header-bg: #001f3f;
+    --color-card-bg: #111;
+    --color-card-border: #333;
+    
+    --color-debt: #ff4136; /* Un rojo más vibrante y accesible */
+    --color-debt-bg: rgba(255, 65, 54, 0.1);
+    --color-gdp: #2ecc40; /* Un verde más vibrante */
+    --color-gdp-bg: rgba(46, 204, 64, 0.1);
+    --color-inflation: #ff851b; /* Un naranja más vibrante */
+    --color-inflation-bg: rgba(255, 133, 27, 0.1);
+}
+
+/* MEJORA 2: Reset Básico y Escalabilidad */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body { 
-    font-family: 'Courier New', monospace; /* Fuente como reloj digital */
-    background: #000; /* Fondo negro para drama, como DebtClock */
-    color: #fff; 
+    font-family: var(--font-main);
+    background: var(--color-background); 
+    color: var(--color-text); 
     margin: 0; 
     padding: 0; 
     overflow-x: hidden;
 }
+
 header { 
     text-align: center; 
-    background: #001f3f; /* Azul oscuro */
-    color: #fff; 
-    padding: 20px; 
+    background: var(--color-header-bg);
+    color: var(--color-text); 
+    padding: 1.25rem; /* Usando rem para escalabilidad */
     margin: 0;
 }
-header h1 { font-size: 2.5em; margin: 0; }
-header p { font-size: 1.2em; margin: 5px 0; }
+
+/* Usando rem para que el tamaño de fuente escale con la configuración del usuario */
+header h1 { font-size: 2.5rem; margin: 0; }
+header p { font-size: 1.2rem; margin: 0.3rem 0; }
 
 .dashboard { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 columnas en desktop, 1 en móvil */
-    gap: 20px; 
-    padding: 20px; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem; 
+    padding: 1.25rem; 
     max-width: 1200px; 
     margin: 0 auto;
 }
-.column { display: flex; flex-direction: column; gap: 20px; }
+
+.column { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.25rem; 
+}
 
 .counter-card { 
-    background: #111; 
-    border: 2px solid #333; 
-    border-radius: 5px; 
-    padding: 15px; 
+    background: var(--color-card-bg); 
+    border: 2px solid var(--color-card-border); 
+    border-radius: 8px; /* Un poco más suave */
+    padding: 1rem; 
     text-align: center; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    /* MEJORA 3: Refinamiento Visual (Transiciones) */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
-.counter-card.debt { border-color: #ff0000; background: #220000; } /* Rojo para deuda */
-.counter-card.gdp { border-color: #00ff00; background: #002200; } /* Verde para PIB */
-.counter-card.inflation { border-color: #ffaa00; background: #332200; } /* Naranja para inflación */
 
-label { 
+.counter-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.7);
+}
+
+/* Colores de borde y fondo usando variables */
+.counter-card.debt { border-color: var(--color-debt); background: var(--color-debt-bg); }
+.counter-card.gdp { border-color: var(--color-gdp); background: var(--color-gdp-bg); }
+.counter-card.inflation { border-color: var(--color-inflation); background: var(--color-inflation-bg); }
+
+/* MEJORA 4: Sincronización con HTML (usando .card-title para el h2) */
+.card-title { 
     display: block; 
-    font-size: 0.9em; 
+    font-size: 0.9rem; 
+    font-weight: bold;
     text-transform: uppercase; 
-    color: #ccc; 
-    margin-bottom: 5px;
+    color: var(--color-text-muted); 
+    margin-bottom: 0.5rem;
 }
+
 .counter { 
-    font-size: 3em; /* Gigante como DebtClock */
+    font-size: clamp(2rem, 6vw, 3rem); /* Fuente fluida y adaptable */
     font-weight: bold; 
-    margin: 10px 0; 
-    line-height: 1;
-    min-height: 1em; /* Para animación */
+    color: var(--color-text);
+    margin: 0.5rem 0; 
+    line-height: 1.1;
 }
-.counter::after { content: ''; display: block; height: 0.5em; } /* Espacio para animar */
+
+/* Cambiando el color del counter según el tipo de tarjeta */
+.debt .counter { color: var(--color-debt); }
+.gdp .counter { color: var(--color-gdp); }
+.inflation .counter { color: var(--color-inflation); }
+
 
 .explain { 
-    font-size: 0.7em; 
+    font-size: 0.8rem; 
     color: #aaa; 
-    margin: 5px 0 0; 
-    line-height: 1.2;
+    margin: 0.5rem 0 0; 
+    line-height: 1.4;
 }
 
 footer { 
     text-align: center; 
-    padding: 10px; 
-    background: #001f3f; 
-    font-size: 0.8em; 
-    color: #ccc;
+    padding: 1rem; 
+    background: var(--color-header-bg); 
+    font-size: 0.8rem; 
+    color: var(--color-text-muted);
+    margin-top: 1rem;
 }
-footer a { color: #fff; text-decoration: none; }
+
+footer a { 
+    color: var(--color-text); 
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* MEJORA 5: Accesibilidad en Foco */
+footer a:hover, footer a:focus-visible {
+    text-decoration: underline;
+    outline: 2px solid var(--color-text);
+    outline-offset: 2px;
+}
 
 /* Responsive para móvil */
 @media (max-width: 768px) {
-    .dashboard { grid-template-columns: 1fr; }
-    .counter { font-size: 2em; }
+    header h1 { font-size: 2rem; }
+    header p { font-size: 1rem; }
 }
