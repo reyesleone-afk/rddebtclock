@@ -1,46 +1,89 @@
-// Función para animar contadores (tic-tac estilo DebtClock)
-function animateCounter(id, target, duration = 3000, isCurrency = true, decimals = 0) {
-    const elem = document.getElementById(id);
-    if (!elem) return;
-    const start = 0; // Empieza de 0 para efecto dramático
-    const increment = (target - start) / (duration / 16); // ~60fps
-    let current = start;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) current = target;
+// Espera a que todo el contenido del HTML esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+
+    // MEJORA 1: Datos Centralizados y Fáciles de Actualizar
+    // Todo lo que necesitas cambiar en el futuro está aquí.
+    // ratePerSecond: Cuánto cambia el valor cada segundo.
+    //   - Positivo para aumentar (deuda, pib, población).
+    //   - Negativo para disminuir.
+    //   - 0 para valores estáticos (tasa de interés, inflación).
+    const countersConfig = [
+        { id: 'debt-total',      ratePerSecond: 2500,    formatter: formatCurrency },
+        { id: 'debt-per-capita', ratePerSecond: 0.05,    formatter: (val) => formatCurrency(val, 2) },
+        { id: 'debt-gdp',        ratePerSecond: 0,       formatter: (val) => formatPercentage(val, 1) },
         
-        let display;
-        if (isCurrency) {
-            display = new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'USD' }).format(current);
-        } else if (id.includes('growth') || id.includes('inflation') || id.includes('rate')) {
-            display = current.toFixed(decimals) + '%';
-        } else {
-            display = Intl.NumberFormat('es-DO').format(current);
-        }
-        elem.textContent = display;
+        { id: 'gdp-total',       ratePerSecond: 4000,    formatter: formatCurrency },
+        { id: 'gdp-growth',      ratePerSecond: 0,       formatter: (val) => formatPercentage(val, 1, true) },
+        { id: 'population',      ratePerSecond: 0.8,     formatter: formatNumber },
         
-        if (current >= target) {
-            clearInterval(timer);
-            // Pequeña pausa y reinicio sutil para "real-time"
-            setTimeout(() => animateCounter(id, target + (target * 0.001), duration / 2, isCurrency, decimals), 5000);
+        { id: 'inflation',       ratePerSecond: 0,       formatter: (val) => formatPercentage(val, 1) },
+        { id: 'remesas',         ratePerSecond: 350,     formatter: formatCurrency },
+        { id: 'interest-rate',   ratePerSecond: 0,       formatter: (val) => formatPercentage(val, 2) }
+    ];
+
+    // Carga los valores iniciales desde los atributos data-value del HTML
+    countersConfig.forEach(config => {
+        const element = document.getElementById(config.id);
+        if (element && element.dataset.value) {
+            config.initialValue = parseFloat(element.dataset.value);
+            config.element = element; // Guardamos la referencia al elemento para no buscarlo cada vez
         }
-    }, 16);
+    });
+
+    const startTime = Date.now();
+
+    // MEJORA 2: Bucle de Animación Optimizado con requestAnimationFrame
+    // Usamos un único bucle para actualizar todos los contadores. Es mucho más
+    // eficiente que múltiples setIntervals.
+    function tick() {
+        const elapsedTime = Date.now() - startTime;
+        const elapsedSeconds = elapsedTime / 1000;
+
+        countersConfig.forEach(config => {
+            if (!config.element || typeof config.initialValue === 'undefined') return;
+
+            // MEJORA 3: Motor de Actualización Realista (Basado en el Tiempo)
+            // Calculamos el valor actual basado en el tiempo real transcurrido.
+            // Esto es mucho más preciso y realista que un incremento fijo.
+            const currentValue = config.initialValue + (elapsedSeconds * config.ratePerSecond);
+            
+            // Usamos el formateador específico para mostrar el valor
+            config.element.textContent = config.formatter(currentValue);
+        });
+
+        // Solicita al navegador que ejecute 'tick' en el próximo frame de animación
+        requestAnimationFrame(tick);
+    }
+
+    // Inicia el bucle de animación
+    requestAnimationFrame(tick);
+});
+
+
+// MEJORA 4: Funciones de Formato Reutilizables y Claras
+// Estas funciones se encargan solo de la presentación, separando la lógica.
+const esDO_Locale = 'es-DO';
+
+function formatCurrency(value, decimals = 0) {
+    return new Intl.NumberFormat(esDO_Locale, { 
+        style: 'currency', 
+        currency: 'USD',
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+    }).format(value);
 }
 
-// Actualiza y anima al cargar
-document.addEventListener('DOMContentLoaded', function() {
-    // Deuda
-    animateCounter('debt-total', 60500000000, 4000, true);
-    animateCounter('debt-per-capita', 5350, 2000, true);
-    animateCounter('debt-gdp', 46.9, 2000, false, 1);
-    
-    // PIB
-    animateCounter('gdp-total', 128500000000, 4000, true);
-    animateCounter('gdp-growth', 4.8, 2000, false, 1);
-    animateCounter('population', 11300000, 3000, false);
-    
-    // Otros
-    animateCounter('inflation', 3.7, 1500, false, 1);
-    animateCounter('remesas', 10200000000, 3500, true);
-    animateCounter('interest-rate', 5.5, 1500, false, 2);
-});
+function formatPercentage(value, decimals = 1, showSign = false) {
+    let options = {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
+    };
+    if (showSign) {
+        options.signDisplay = 'always';
+    }
+    return new Intl.NumberFormat(esDO_Locale, options).format(value) + '%';
+}
+
+function formatNumber(value) {
+    return new Intl.NumberFormat(esDO_Locale).format(Math.floor(value));
+}
