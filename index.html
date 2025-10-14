@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- MEJORA 1: Meta Descripción para SEO -->
     <meta name="description" content="El reloj de la economía dominicana: sigue la Deuda Pública, PIB, inflación y otros indicadores clave de la República Dominicana actualizados en tiempo real.">
-    
     <title>RDDebtClock - Economía RD en Tiempo Real</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
     <header>
         <h1>RDDebtClock 🇩🇴</h1>
@@ -17,12 +16,10 @@
     </header>
 
     <main class="dashboard">
-        <!-- Columna 1: Deuda y Breakdowns -->
+        <!-- Columna 1: Deuda -->
         <section class="column" aria-labelledby="debt-heading">
             <div class="counter-card debt">
-                <!-- MEJORA 2: Uso de <h2> en lugar de <label> para semántica -->
                 <h2 id="debt-heading" class="card-title">DEUDA PÚBLICA TOTAL</h2>
-                <!-- MEJORA 3: Atributos de datos y ARIA para accesibilidad -->
                 <div id="debt-total" class="counter" data-value="605000000000" aria-live="polite">US$60,500,000,000</div>
                 <p class="explain">El total que debe el gobierno de RD (Fuente: DGCP, Oct 2025)</p>
             </div>
@@ -40,7 +37,7 @@
             </div>
         </section>
 
-        <!-- Columna 2: PIB y Crecimiento -->
+        <!-- Columna 2: PIB -->
         <section class="column" aria-labelledby="gdp-heading">
             <div class="counter-card gdp">
                 <h2 id="gdp-heading" class="card-title">PIB TOTAL ANUAL</h2>
@@ -57,13 +54,13 @@
             <div class="counter-card">
                 <h2 class="card-title">POBLACIÓN TOTAL</h2>
                 <div id="population" class="counter" data-value="11300000" aria-live="polite">11,300,000</div>
-                <p class="explain">Número de habitantes en RD (incluye a todos, para calcular per cápita)</p>
+                <p class="explain">Número de habitantes en RD (usado para calcular cifras per cápita)</p>
             </div>
         </section>
 
-        <!-- Columna 3: Inflación, Remesas y Tasa -->
+        <!-- Columna 3: Inflación, Remesas, Tasa -->
         <section class="column" aria-labelledby="indicators-heading">
-             <div class="counter-card inflation">
+            <div class="counter-card inflation">
                 <h2 id="indicators-heading" class="card-title">INFLACIÓN ANUAL</h2>
                 <div id="inflation" class="counter" data-value="3.7" aria-live="polite">3.7%</div>
                 <p class="explain">Cuánto suben los precios al año (baja = más poder de compra para ti)</p>
@@ -84,7 +81,12 @@
     </main>
 
     <footer>
-        <p>Actualizado: 8 de Octubre 2025 | Fuentes: BCRD, DGCP, MEPyD | <a href="https://www.bancentral.gov.do/" target="_blank" rel="noopener noreferrer">Más Datos</a></p>
+        <p>
+            Actualizado: 
+            <time datetime="2025-10-08">8 de Octubre 2025</time> |
+            Fuentes: BCRD, DGCP, MEPyD |
+            <a href="https://www.bancentral.gov.do/" target="_blank" rel="noopener noreferrer">Más Datos</a>
+        </p>
     </footer>
 
     <script src="script.js"></script>
