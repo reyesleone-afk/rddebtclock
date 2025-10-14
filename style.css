@@ -1,1 +1,194 @@
-header h1{font-size:3em}nav a{color:#FFF;text-decoration:none;margin:0 10px}.cta{background:#FFD700;padding:5px 10px;border-radius:5px}.counter-card.debt .counter,.counter-card.gdp .counter{font-size:3em}
+body {
+    font-family: 'Courier New', monospace;
+    background: #F5F5F5; /* Gris claro neutro */
+    color: #333; /* Negro suave */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode {
+    background: #333;
+    color: #F5F5F5;
+}
+
+header {
+    text-align: center;
+    background: #F5F5F5;
+    padding: 20px;
+    margin: 0;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+    color: inherit;
+}
+
+nav {
+    margin: 10px 0;
+}
+
+nav a {
+    color: inherit;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.cta {
+    background: #666;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: #F5F5F5;
+    cursor: pointer;
+}
+
+.cta:hover {
+    background: #888;
+}
+
+.live-clock {
+    font-size: 1.5em;
+    margin-top: 10px;
+    color: inherit;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.counter-card {
+    background: #FFF;
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 250px;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+.counter-card.debt,
+.counter-card.gdp,
+.counter-card.inflation,
+.counter-card.remesas,
+.counter-card.exchange,
+.counter-card.unemployment,
+.counter-card.reserves,
+.counter-card.investment,
+.counter-card.inflation-monthly,
+.counter-card.metal-gold,
+.counter-card.metal-silver,
+.counter-card.metal-platinum,
+.counter-card.metal-copper {
+    background: inherit;
+    border-color: #333;
+    color: inherit;
+}
+
+label {
+    display: block;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: inherit;
+}
+
+.counter {
+    font-size: 3em; /* Mayor énfasis en cifras */
+    font-weight: bold;
+    margin: 10px 0;
+    line-height: 1;
+    min-height: 1em;
+    word-break: break-all;
+    color: inherit;
+}
+
+.counter::after {
+    content: '';
+    display: block;
+    height: 0.5em;
+}
+
+.explain {
+    font-size: 0.7em;
+    margin: 5px 0 0;
+    line-height: 1.2;
+    word-break: break-word;
+    color: inherit;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    font-size: 0.8em;
+    color: #F5F5F5;
+}
+
+footer a {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+.bvrd-link {
+    display: inline-block;
+    margin-top: 5px;
+    color: #FFD700;
+    text-decoration: none;
+}
+
+.bvrd-link i {
+    margin-right: 5px;
+}
+
+@media (max-width: 1280px) {
+    .dashboard {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    nav a {
+        display: block;
+        text-align: center;
+    }
+    .cta {
+        margin: 10px 0;
+    }
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+    .counter {
+        font-size: 1.8em;
+    }
+    .live-clock {
+        font-size: 1.2em;
+    }
+}
+
+body.dark-mode .counter-card {
+    background: #444;
+}
+
+body.dark-mode .cta {
+    background: #999;
+}
+
+body.dark-mode .cta:hover {
+    background: #BBB;
+}
