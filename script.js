@@ -20,6 +20,8 @@ function animateCounter(id, target, duration = 3000, isCurrency = true, decimals
             display = current.toFixed(decimals) + '%';
         } else if (id.includes('usd') || id.includes('eur')) {
             display = current.toFixed(2) + ' DOP';
+        } else if (id.includes('price')) {
+            display = current.toFixed(2) + ' USD'; // Para metales
         } else {
             display = Intl.NumberFormat('es-DO').format(current);
         }
@@ -42,28 +44,25 @@ function updateLiveClock() {
 setInterval(updateLiveClock, 1000);
 updateLiveClock();
 
-// Automatización: Fetch tipos de cambio desde API gratuita
+// Fetch tipos de cambio (ya implementado)
 async function fetchExchangeRates() {
     try {
         const usdResponse = await fetch('https://currency-api.pages.dev/v1/currencies/usd.json');
         const usdData = await usdResponse.json();
-        const usdRate = usdData.usd.dop; // 1 USD to DOP
+        const usdRate = usdData.usd.dop;
 
         const eurResponse = await fetch('https://currency-api.pages.dev/v1/currencies/eur.json');
         const eurData = await eurResponse.json();
-        const eurRate = eurData.eur.dop; // 1 EUR to DOP
+        const eurRate = eurData.eur.dop;
 
-        // Actualiza contadores con datos reales
         animateCounter('usd-rate', usdRate, 2000, false, 2, ' DOP');
         animateCounter('eur-rate', eurRate, 2000, false, 2, ' DOP');
 
-        // Actualiza explicación con fecha actual
         const date = new Date().toLocaleDateString('es-DO');
         document.querySelector('#usd-rate + .explain').textContent = `Tipo de cambio promedio (Fuente: BCRD vía API, ${date})`;
         document.querySelector('#eur-rate + .explain').textContent = `Tipo de cambio promedio (Fuente: BCRD vía API, ${date})`;
     } catch (error) {
         console.error('Error fetching rates:', error);
-        // Fallback a valores hard-coded si falla
         animateCounter('usd-rate', 60.50, 2000, false, 2, ' DOP');
         animateCounter('eur-rate', 65.00, 2000, false, 2, ' DOP');
     }
@@ -71,9 +70,9 @@ async function fetchExchangeRates() {
 
 // Actualiza y anima al cargar
 document.addEventListener('DOMContentLoaded', function() {
-    fetchExchangeRates(); // Automatiza tipos de cambio
+    fetchExchangeRates();
 
-    // Otros contadores (hard-coded por ahora, automatizar en futuro)
+    // Otros contadores
     animateCounter('debt-total', 60500000000, 4000, true);
     animateCounter('debt-per-capita', 5350, 2000, true);
     animateCounter('debt-gdp', 46.9, 2000, false, 1);
@@ -85,9 +84,14 @@ document.addEventListener('DOMContentLoaded', function() {
     animateCounter('inflation', 3.7, 1500, false, 1);
     animateCounter('remesas', 10200000000, 3500, true);
     
-    // Nuevas métricas (hard-coded, automatizar después)
     animateCounter('unemployment-rate', 7.4, 1500, false, 1, '%');
     animateCounter('reserves', 15300000000, 3000, true);
     animateCounter('ied', 4050000000, 3000, true);
     animateCounter('ipc-monthly', 0.31, 1500, false, 2, '%');
+    
+    // Nuevos: Precios de metales
+    animateCounter('gold-price', 4129.00, 2000, false, 2, ' USD');
+    animateCounter('silver-price', 51.28, 2000, false, 2, ' USD');
+    animateCounter('platinum-price', 1659.00, 2000, false, 2, ' USD');
+    animateCounter('copper-price', 5.08, 2000, false, 2, ' USD');
 });
