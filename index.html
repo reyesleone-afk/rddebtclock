@@ -1,94 +1,151 @@
-<!DOCTYPE html>
+<!-- filename: index.html -->
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="El reloj de la economía dominicana: sigue la Deuda Pública, PIB, inflación y otros indicadores clave de la República Dominicana actualizados en tiempo real.">
-    <title>RDDebtClock - Economía RD en Tiempo Real</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RD Debt Clock — Economía RD en tiempo real</title>
+  <meta name="description" content="El reloj de la economía dominicana: sigue la Deuda Pública, PIB, inflación y otros indicadores clave de la República Dominicana actualizados en tiempo real.">
+
+  <!-- SEO + Social -->
+  <link rel="canonical" href="https://rddebtclock.com/">
+  <meta property="og:title" content="RD Debt Clock — Economía RD en tiempo real">
+  <meta property="og:description" content="Deuda, PIB, inflación, remesas y más con datos claros y actualizados.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rddebtclock.com/">
+  <meta property="og:image" content="https://rddebtclock.com/og-cover.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- CSS mínimo para footer pegado y contenedor (no rompe tu style.css) -->
+  <style>
+    html, body { height: 100%; }
+    body { margin: 0; display: flex; flex-direction: column; }
+    main { flex: 1 0 auto; }
+    footer { margin-top: auto; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+    header .container, footer .container { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    header a.brand { text-decoration:none; font-weight:800; color: inherit; display:inline-flex; align-items:center; gap:.5rem; }
+    .hero { padding: 1.2rem 0 .5rem; }
+    .hero h1 { margin: 0 0 .25rem; font-size: clamp(1.6rem, 2.5vw, 2.2rem); }
+    .hero p.lead { margin: 0; opacity:.9; }
+    .about { padding: 1rem 0 2rem; }
+    .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+  </style>
 </head>
 
 <body>
-    <header>
-        <h1>RDDebtClock 🇩🇴</h1>
-        <p>El reloj de la economía dominicana: Deuda, PIB y más – Actualizado en tiempo real</p>
-    </header>
+  <!-- Header minimal: solo marca/nombre (sin H1 aquí) -->
+  <header role="banner">
+    <div class="container">
+      <a class="brand" href="/" aria-label="Inicio RD Debt Clock">RDDebtClock 🇩🇴</a>
+      <!-- lugar para un futuro botón de menú o idioma -->
+      <span class="visually-hidden">Navegación principal</span>
+    </div>
+  </header>
 
-    <main class="dashboard">
-        <!-- Columna 1: Deuda -->
-        <section class="column" aria-labelledby="debt-heading">
-            <div class="counter-card debt">
-                <h2 id="debt-heading" class="card-title">DEUDA PÚBLICA TOTAL</h2>
-                <div id="debt-total" class="counter" data-value="605000000000" aria-live="polite">US$60,500,000,000</div>
-                <p class="explain">El total que debe el gobierno de RD (Fuente: DGCP, Oct 2025)</p>
-            </div>
+  <main class="dashboard" role="main">
+    <!-- Hero con H1 correcto para SEO -->
+    <section class="hero container" aria-labelledby="site-title">
+      <h1 id="site-title">El reloj de la economía dominicana en tiempo (casi) real</h1>
+      <p class="lead">Deuda, PIB, inflación, remesas y más — datos claros y comprensibles.</p>
+    </section>
 
-            <div class="counter-card">
-                <h2 class="card-title">DEUDA POR HABITANTE</h2>
-                <div id="debt-per-capita" class="counter" data-value="5350" aria-live="polite">US$5,350</div>
-                <p class="explain">Tu parte aproximada si divides la deuda entre 11.3 millones de dominicanos</p>
-            </div>
+    <!-- Tus tres columnas originales: IDs y data-value intactos -->
+    <div class="container" aria-label="Tablero de indicadores">
+      <!-- Columna 1: Deuda -->
+      <section class="column" aria-labelledby="debt-heading">
+        <div class="counter-card debt">
+          <h2 id="debt-heading" class="card-title">DEUDA PÚBLICA TOTAL</h2>
+          <div id="debt-total" class="counter" data-value="605000000000" aria-live="polite">US$60,500,000,000</div>
+          <p class="explain">El total que debe el gobierno de RD (Fuente: DGCP, Oct 2025)</p>
+        </div>
 
-            <div class="counter-card">
-                <h2 class="card-title">DEUDA % DEL PIB</h2>
-                <div id="debt-gdp" class="counter" data-value="46.9" aria-live="polite">46.9%</div>
-                <p class="explain">Cuán grande es la deuda comparada con toda la economía de RD</p>
-            </div>
-        </section>
+        <div class="counter-card">
+          <h2 class="card-title">DEUDA POR HABITANTE</h2>
+          <div id="debt-per-capita" class="counter" data-value="5350" aria-live="polite">US$5,350</div>
+          <p class="explain">Tu parte aproximada si divides la deuda entre 11.3 millones de dominicanos</p>
+        </div>
 
-        <!-- Columna 2: PIB -->
-        <section class="column" aria-labelledby="gdp-heading">
-            <div class="counter-card gdp">
-                <h2 id="gdp-heading" class="card-title">PIB TOTAL ANUAL</h2>
-                <div id="gdp-total" class="counter" data-value="128500000000" aria-live="polite">US$128,500,000,000</div>
-                <p class="explain">El tamaño total de la economía dominicana (Fuente: BCRD, Est. 2025)</p>
-            </div>
+        <div class="counter-card">
+          <h2 class="card-title">DEUDA % DEL PIB</h2>
+          <div id="debt-gdp" class="counter" data-value="46.9" aria-live="polite">46.9%</div>
+          <p class="explain">Cuán grande es la deuda comparada con toda la economía de RD</p>
+        </div>
+      </section>
 
-            <div class="counter-card">
-                <h2 class="card-title">CRECIMIENTO PIB</h2>
-                <div id="gdp-growth" class="counter" data-value="4.8" aria-live="polite">+4.8%</div>
-                <p class="explain">Cuánto creció la economía este año (buena noticia para empleos y salarios)</p>
-            </div>
+      <!-- Columna 2: PIB -->
+      <section class="column" aria-labelledby="gdp-heading">
+        <div class="counter-card gdp">
+          <h2 id="gdp-heading" class="card-title">PIB TOTAL ANUAL</h2>
+          <div id="gdp-total" class="counter" data-value="128500000000" aria-live="polite">US$128,500,000,000</div>
+          <p class="explain">El tamaño total de la economía dominicana (Fuente: BCRD, Est. 2025)</p>
+        </div>
 
-            <div class="counter-card">
-                <h2 class="card-title">POBLACIÓN TOTAL</h2>
-                <div id="population" class="counter" data-value="11300000" aria-live="polite">11,300,000</div>
-                <p class="explain">Número de habitantes en RD (usado para calcular cifras per cápita)</p>
-            </div>
-        </section>
+        <div class="counter-card">
+          <h2 class="card-title">CRECIMIENTO PIB</h2>
+          <div id="gdp-growth" class="counter" data-value="4.8" aria-live="polite">+4.8%</div>
+          <p class="explain">Cuánto creció la economía este año (buena noticia para empleos y salarios)</p>
+        </div>
 
-        <!-- Columna 3: Inflación, Remesas, Tasa -->
-        <section class="column" aria-labelledby="indicators-heading">
-            <div class="counter-card inflation">
-                <h2 id="indicators-heading" class="card-title">INFLACIÓN ANUAL</h2>
-                <div id="inflation" class="counter" data-value="3.7" aria-live="polite">3.7%</div>
-                <p class="explain">Cuánto suben los precios al año (baja = más poder de compra para ti)</p>
-            </div>
+        <div class="counter-card">
+          <h2 class="card-title">POBLACIÓN TOTAL</h2>
+          <div id="population" class="counter" data-value="11300000" aria-live="polite">11,300,000</div>
+          <p class="explain">Número de habitantes en RD (usado para calcular cifras per cápita)</p>
+        </div>
+      </section>
 
-            <div class="counter-card">
-                <h2 class="card-title">REMESAS ANUALES</h2>
-                <div id="remesas" class="counter" data-value="10200000000" aria-live="polite">US$10,200,000,000</div>
-                <p class="explain">Dinero que envían dominicanos en el exterior (motor clave de la economía)</p>
-            </div>
+      <!-- Columna 3: Inflación, Remesas, Tasa -->
+      <section class="column" aria-labelledby="indicators-heading">
+        <div class="counter-card inflation">
+          <h2 id="indicators-heading" class="card-title">INFLACIÓN ANUAL</h2>
+          <div id="inflation" class="counter" data-value="3.7" aria-live="polite">3.7%</div>
+          <p class="explain">Cuánto suben los precios al año (baja = más poder de compra para ti)</p>
+        </div>
 
-            <div class="counter-card">
-                <h2 class="card-title">TASA DE INTERÉS BCRD</h2>
-                <div id="interest-rate" class="counter" data-value="5.50" aria-live="polite">5.50%</div>
-                <p class="explain">La tasa base del Banco Central (afecta préstamos y ahorros)</p>
-            </div>
-        </section>
-    </main>
+        <div class="counter-card">
+          <h2 class="card-title">REMESAS ANUALES</h2>
+          <div id="remesas" class="counter" data-value="10200000000" aria-live="polite">US$10,200,000,000</div>
+          <p class="explain">Dinero que envían dominicanos en el exterior (motor clave de la economía)</p>
+        </div>
 
-    <footer>
-        <p>
-            Actualizado: 
-            <time datetime="2025-10-08">8 de Octubre 2025</time> |
-            Fuentes: BCRD, DGCP, MEPyD |
-            <a href="https://www.bancentral.gov.do/" target="_blank" rel="noopener noreferrer">Más Datos</a>
-        </p>
-    </footer>
+        <div class="counter-card">
+          <h2 class="card-title">TASA DE INTERÉS BCRD</h2>
+          <div id="interest-rate" class="counter" data-value="5.50" aria-live="polite">5.50%</div>
+          <p class="explain">La tasa base del Banco Central (afecta préstamos y ahorros)</p>
+        </div>
+      </section>
+    </div>
 
-    <script src="script.js"></script>
+    <!-- Bloque SEO/Contexto -->
+    <section class="about container" aria-labelledby="about-title">
+      <h2 id="about-title">Acerca del proyecto</h2>
+      <p>
+        RD Debt Clock es una iniciativa independiente para visualizar indicadores clave de la economía de la República Dominicana
+        —como deuda pública, PIB, inflación, remesas y población— de forma clara y pedagógica. Los datos provienen de fuentes oficiales
+        y se actualizan periódicamente. Nuestra misión es facilitar la comprensión económica para ciudadanos, estudiantes, periodistas
+        y tomadores de decisiones.
+      </p>
+      <p>
+        Próximamente: páginas de detalle por indicador, series históricas y un boletín quincenal con análisis. 
+        Si quieres aportar ideas o detectar errores, contáctanos.
+      </p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <p>
+        Actualizado:
+        <time id="last-update" datetime="2025-10-08">8 de octubre de 2025</time> |
+        Fuentes: BCRD, DGCP, MEPyD |
+        <a href="https://www.bancentral.gov.do/" target="_blank" rel="noopener noreferrer">Más datos</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
