@@ -1,198 +1,214 @@
-/* filename: style.css */
-/* ===== Variables de tema ===== */
-:root {
-  --font-main: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, 'Roboto Mono', 'Courier New', monospace;
-
-  --color-background: #000;
-  --color-text: #fff;
-  --color-text-muted: #cfcfd2;
-  --color-header-bg: #001f3f;
-  --color-card-bg: #0d0f14;
-  --color-card-border: #2b2f39;
-
-  --color-debt: #ff4136;
-  --color-debt-bg: rgba(255, 65, 54, 0.08);
-  --color-gdp: #2ecc40;
-  --color-gdp-bg: rgba(46, 204, 64, 0.08);
-  --color-inflation: #ff851b;
-  --color-inflation-bg: rgba(255, 133, 27, 0.08);
-
-  --radius: 12px;
-  --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
-  --shadow-md: 0 6px 18px rgba(0,0,0,.45);
-}
-
-/* ===== Reset básico ===== */
+/* ===== Reset & base ===== */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; height: 100%; }
+html, body { height: 100%; margin: 0; }
 img { max-width: 100%; display: block; }
-a { color: inherit; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid #42b2ff; outline-offset: 2px; }
 
-/* ===== Layout de página (footer pegado abajo) ===== */
 body {
   min-height: 100dvh;
-  background: var(--color-background);
-  color: var(--color-text);
-  font-family: var(--font-main);
+  display: flex; flex-direction: column;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Roboto Mono", "Courier New", monospace;
   line-height: 1.5;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch; /* evita que el contenido se quede angosto */
-  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
+
+/* ===== Tokens comunes ===== */
+:root {
+  --radius: 16px;
+  --shadow-1: 0 6px 20px rgba(0,0,0,.25);
+  --shadow-2: 0 12px 30px rgba(0,0,0,.35);
+  --w-container: min(1120px, 92%);
+}
+
+/* ======= SKIN 1: DARK PRO (predeterminado) ======= */
+body[data-skin="dark"]{
+  --bg: radial-gradient(1200px 700px at 20% -10%, #0a1930 0%, #060b15 40%, #05070d 100%);
+  --header-bg: rgba(7,12,22,.8);
+  --text: #e8f0ff;
+  --muted:#9fb2d5;
+  --card:#0d1627;
+  --card-border:#1c2a45;
+  --accent:#42b2ff;
+
+  --tag-debt:#ff4d4d; --tag-debt-bg: rgba(255,77,77,.1);
+  --tag-gdp:#11d674;  --tag-gdp-bg: rgba(17,214,116,.1);
+  --tag-infl:#ff9b3d; --tag-infl-bg: rgba(255,155,61,.1);
+}
+
+/* ======= SKIN 2: LIGHT EDITORIAL ======= */
+body[data-skin="light"]{
+  --bg: linear-gradient(180deg,#f7f9fe 0%, #ffffff 60%);
+  --header-bg: #ffffff;
+  --text: #0b1220;
+  --muted:#51607b;
+  --card:#ffffff;
+  --card-border:#e7ecf4;
+  --accent:#0b6cff;
+
+  --tag-debt:#c02626; --tag-debt-bg: rgba(192,38,38,.08);
+  --tag-gdp:#0f7a3a;  --tag-gdp-bg: rgba(15,122,58,.08);
+  --tag-infl:#c06714; --tag-infl-bg: rgba(192,103,20,.08);
+}
+
+/* ======= SKIN 3: GLASS & NEON ======= */
+body[data-skin="glass"]{
+  --bg:
+    radial-gradient(800px 500px at 15% -10%, rgba(66,178,255,.35), transparent 60%),
+    radial-gradient(900px 600px at 85% 110%, rgba(17,214,116,.25), transparent 60%),
+    #03050a;
+  --header-bg: rgba(10,14,24,.5);
+  --text: #ecf3ff;
+  --muted:#a8bad6;
+  --card: rgba(18,26,44,.55);
+  --card-border: rgba(255,255,255,.14);
+  --accent:#42b2ff;
+
+  --tag-debt:#ff5b6e; --tag-debt-bg: rgba(255,91,110,.12);
+  --tag-gdp:#4be39a;  --tag-gdp-bg: rgba(75,227,154,.12);
+  --tag-infl:#ffc36a; --tag-infl-bg: rgba(255,195,106,.12);
+  backdrop-filter: blur(0px); /* activaremos blur en cards */
+}
+
+/* ===== Layout general ===== */
+body { background: var(--bg); color: var(--text); }
 main.dashboard { flex: 1 0 auto; }
-footer { margin-top: auto; }
+.container { width: var(--w-container); margin-inline: auto; }
 
-/* ===== Header ===== */
+/* ===== Header / Hero compacto ===== */
 header {
+  position: sticky; top: 0; z-index: 50;
   width: 100%;
-  text-align: center;
-  background: var(--color-header-bg);
-  color: var(--color-text);
-  padding: 1.25rem;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  box-shadow: var(--shadow-sm);
+  background: var(--header-bg);
+  border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  box-shadow: var(--shadow-1);
 }
-header h1 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); margin: 0; letter-spacing: .2px; }
-header p { font-size: clamp(0.95rem, 1.6vw, 1.1rem); margin: .35rem 0 0; opacity: .92; }
+header .container { display:flex; flex-direction: column; align-items:center; padding: 18px 0 14px; text-align:center; gap: 6px; }
+header h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  letter-spacing: .3px;
+  font-weight: 800;
+}
+header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(.95rem, 1.6vw, 1.05rem);
+}
 
-/* ===== Dashboard (Grid estable) ===== */
+/* ===== Hero separado del header (opcional) ===== */
+.hero { padding: 18px 0 4px; }
+.hero .container { text-align: center; }
+.hero h1 { margin:0 0 6px; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.hero .lead { color: var(--muted); margin:0; }
+
+/* ===== Tablero ===== */
 .dashboard {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.25rem;
-  width: min(90%, 1200px);
-  margin: 2rem auto;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  width: var(--w-container);
+  margin: 22px auto 18px;
+  align-items: stretch;
 }
 
-/* ===== Columnas (por si hay estilos heredados) ===== */
-.column { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+/* Tres columnas responsivas sin romper tu estructura */
+.column { display: grid; gap: 16px; min-width: 0; }
+.column:nth-of-type(1){ grid-column: span 4; }
+.column:nth-of-type(2){ grid-column: span 4; }
+.column:nth-of-type(3){ grid-column: span 4; }
+
+@media (max-width: 980px){
+  .column:nth-of-type(1),
+  .column:nth-of-type(2),
+  .column:nth-of-type(3){ grid-column: span 12; }
+}
 
 /* ===== Cards ===== */
-.counter-card {
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
+.counter-card{
+  background: var(--card);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius);
-  padding: 1rem;
+  padding: 16px 16px 14px;
   text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  overflow: hidden;            /* 🔒 evita desbordes */
-  container-type: inline-size; /* habilita cqi para tipografía fluida */
-  min-width: 0;                /* 🔒 importante si el padre usa flex/grid */
+  box-shadow: var(--shadow-1);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  container-type: inline-size;
 }
-.counter-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(255,255,255,.14);
+.counter-card:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+  border-color: color-mix(in oklab, var(--accent) 35%, var(--card-border));
+}
+body[data-skin="glass"] .counter-card{
+  backdrop-filter: blur(10px) saturate(120%);
 }
 
-/* Temas por tipo */
-.counter-card.debt      { border-color: var(--color-debt);      background: var(--color-debt-bg); }
-.counter-card.gdp       { border-color: var(--color-gdp);       background: var(--color-gdp-bg); }
-.counter-card.inflation { border-color: var(--color-inflation); background: var(--color-inflation-bg); }
+/* Etiquetas por tipo (color del número) */
+.counter-card.debt      { outline: 1px solid color-mix(in oklab, var(--tag-debt) 45%, transparent); }
+.counter-card.gdp       { outline: 1px solid color-mix(in oklab, var(--tag-gdp) 45%, transparent); }
+.counter-card.inflation { outline: 1px solid color-mix(in oklab, var(--tag-infl) 45%, transparent); }
 
-/* ===== Título de la card ===== */
-.card-title {
-  display: block;
-  font-size: .92rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+/* ===== Título ===== */
+.card-title{
+  margin: 0 0 6px;
+  font-size: .95rem;
   letter-spacing: .06em;
-  margin-bottom: .5rem;
-}
-
-/* ===== Número principal (anti-desborde) ===== */
-.counter {
+  color: var(--muted);
+  text-transform: uppercase;
   font-weight: 800;
-  /* Tipografía fluida: ancho del contenedor + fallback por viewport */
-  font-size: clamp(1.25rem, 10cqi, 3.25rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-  margin: .55rem 0;
-
-  /* 🔒 reglas anti-escape */
-  max-width: 100%;
-  overflow-wrap: anywhere;     /* corta secuencias largas (números, sin espacios) */
-  word-break: break-word;
-  font-variant-numeric: tabular-nums; /* columnas estables al cambiar cifras */
-  min-width: 0;
 }
-.debt .counter      { color: var(--color-debt); }
-.gdp .counter       { color: var(--color-gdp); }
-.inflation .counter { color: var(--color-inflation); }
 
-/* ===== Descripción ===== */
-.explain {
-  font-size: .88rem;
-  color: var(--color-text-muted);
-  margin-top: .5rem;
+/* ===== Número ===== */
+.counter{
+  margin: 6px 0 4px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-size: clamp(1.25rem, 10cqi, 3.1rem);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.debt .counter      { color: var(--tag-debt); }
+.gdp .counter       { color: var(--tag-gdp); }
+.inflation .counter { color: var(--tag-infl); }
+
+/* ===== Describe ===== */
+.explain{
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: .92rem;
   line-height: 1.35;
 }
 
-/* ===== Footer ===== */
-footer {
+/* ===== Footer pegado ===== */
+footer{
+  margin-top: auto;
   width: 100%;
-  text-align: center;
-  padding: 1rem;
-  background: var(--color-header-bg);
-  font-size: .9rem;
-  color: var(--color-text-muted);
-  margin-top: 1rem;
-  border-top: 1px solid rgba(255,255,255,.06);
-  box-shadow: var(--shadow-sm);
+  background: var(--header-bg);
+  border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  box-shadow: var(--shadow-1);
 }
-footer a {
-  color: var(--color-text);
-  text-decoration: none;
-  font-weight: 700;
+footer .container{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  padding: 14px 0;
+  color: var(--muted);
+  font-size: .95rem;
 }
-footer a:hover, footer a:focus-visible {
-  text-decoration: underline;
-  outline: 2px solid var(--color-text);
-  outline-offset: 2px;
+footer a{ color: var(--text); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ===== Motion/Accesibilidad ===== */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; animation: none !important; }
 }
 
-/* ===== Accesibilidad ===== */
-:focus-visible { outline: 2px solid #3aa0ff; outline-offset: 2px; }
-@media (prefers-contrast: more) {
-  .counter-card { border-color: #5a92ff; }
-}
-
-/* ===== Motion ===== */
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 900px) {
-  .dashboard { width: min(94%, 780px); gap: 1rem; }
-}
-@media (max-width: 768px) {
-  header h1 { font-size: clamp(1.4rem, 5.2vw, 2rem); }
-  header p  { font-size: clamp(0.9rem, 3.5vw, 1rem); }
-  .counter  { font-size: clamp(1.05rem, 12cqi, 2.4rem); }
-}
-@media (max-width: 420px) {
-  .dashboard { gap: .9rem; }
-  .counter-card { padding: .9rem; }
-  .card-title { font-size: .88rem; }
-  .explain { font-size: .84rem; }
-}
-
-/* ===== Light mode opcional (respeta preferencia del sistema) ===== */
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-background: #f7f8fb;
-    --color-text: #0b0f1a;
-    --color-text-muted: #4f5b78;
-    --color-header-bg: #ffffff;
-    --color-card-bg: #ffffff;
-    --color-card-border: #e6e9f2;
-  }
-  header, footer { border-color: #e6e9f2; }
-  .counter-card { box-shadow: 0 2px 10px rgba(10, 16, 28, .06); }
-  .counter-card:hover { box-shadow: 0 10px 24px rgba(10,16,28,.12); }
+/* ===== Ajustes móviles ===== */
+@media (max-width: 720px){
+  header .container{ padding: 14px 0 12px; }
+  .dashboard{ gap: 14px; }
+  .counter-card{ padding: 14px; border-radius: 14px; }
+  .card-title{ font-size: .9rem; }
+  .counter{ font-size: clamp(1.1rem, 12cqi, 2.4rem); }
+  .explain{ font-size: .9rem; }
 }
