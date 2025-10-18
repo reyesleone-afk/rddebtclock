@@ -1,0 +1,67 @@
+[
+  {
+    "id": "debt_total",
+    "nombre": "Deuda Pública Total",
+    "descripcion": "Monto total de la deuda del Sector Público No Financiero (SPNF).",
+    "unidad": "USD",
+    "valor": 60500000000,
+    "frecuencia": "Mensual",
+    "fuente": "MEPyD / Dirección de Crédito Público",
+    "fecha_actualizacion": "2025-10-08",
+    "link_fuente": "https://www.creditopublico.gob.do/",
+    "prioridad": 5,
+    "categoria": "Fiscal"
+  },
+  {
+    "id": "pib_total",
+    "nombre": "Producto Interno Bruto (PIB)",
+    "descripcion": "Valor total de la producción de bienes y servicios de RD.",
+    "unidad": "USD",
+    "valor": 128500000000,
+    "frecuencia": "Trimestral",
+    "fuente": "Banco Central de la República Dominicana (BCRD)",
+    "fecha_actualizacion": "2025-10-08",
+    "link_fuente": "https://www.bancentral.gov.do/",
+    "prioridad": 5,
+    "categoria": "Economía"
+  },
+  {
+    "id": "inflacion",
+    "nombre": "Inflación Anual",
+    "descripcion": "Variación promedio del Índice de Precios al Consumidor (IPC).",
+    "unidad": "%",
+    "valor": 3.7,
+    "frecuencia": "Mensual",
+    "fuente": "Banco Central de la República Dominicana (BCRD)",
+    "fecha_actualizacion": "2025-10-08",
+    "link_fuente": "https://www.bancentral.gov.do/",
+    "prioridad": 4,
+    "categoria": "Monetario"
+  },
+  {
+    "id": "remesas",
+    "nombre": "Remesas Recibidas",
+    "descripcion": "Dinero enviado por dominicanos en el exterior.",
+    "unidad": "USD",
+    "valor": 10200000000,
+    "frecuencia": "Mensual",
+    "fuente": "Banco Central de la República Dominicana (BCRD)",
+    "fecha_actualizacion": "2025-10-08",
+    "link_fuente": "https://www.bancentral.gov.do/",
+    "prioridad": 4,
+    "categoria": "Externo"
+  },
+  {
+    "id": "poblacion",
+    "nombre": "Población Total",
+    "descripcion": "Estimación oficial de habitantes en República Dominicana.",
+    "unidad": "Personas",
+    "valor": 11300000,
+    "frecuencia": "Anual",
+    "fuente": "Oficina Nacional de Estadística (ONE)",
+    "fecha_actualizacion": "2025-10-08",
+    "link_fuente": "https://www.one.gob.do/",
+    "prioridad": 4,
+    "categoria": "Demografía"
+  }
+]
