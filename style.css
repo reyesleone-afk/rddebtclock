@@ -1,214 +1,87 @@
-/* ===== Reset & base ===== */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
-img { max-width: 100%; display: block; }
-a { color: inherit; text-decoration: none; }
-:focus-visible { outline: 2px solid #42b2ff; outline-offset: 2px; }
-
+/* ======== ESTILOS BASE ======== */
 body {
-  min-height: 100dvh;
-  display: flex; flex-direction: column;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Roboto Mono", "Courier New", monospace;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-family: "Inter", system-ui, sans-serif;
+    margin: 0;
+    background-color: #0b1020;
+    color: #eaf0ff;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* ===== Tokens comunes ===== */
-:root {
-  --radius: 16px;
-  --shadow-1: 0 6px 20px rgba(0,0,0,.25);
-  --shadow-2: 0 12px 30px rgba(0,0,0,.35);
-  --w-container: min(1120px, 92%);
-}
-
-/* ======= SKIN 1: DARK PRO (predeterminado) ======= */
-body[data-skin="dark"]{
-  --bg: radial-gradient(1200px 700px at 20% -10%, #0a1930 0%, #060b15 40%, #05070d 100%);
-  --header-bg: rgba(7,12,22,.8);
-  --text: #e8f0ff;
-  --muted:#9fb2d5;
-  --card:#0d1627;
-  --card-border:#1c2a45;
-  --accent:#42b2ff;
-
-  --tag-debt:#ff4d4d; --tag-debt-bg: rgba(255,77,77,.1);
-  --tag-gdp:#11d674;  --tag-gdp-bg: rgba(17,214,116,.1);
-  --tag-infl:#ff9b3d; --tag-infl-bg: rgba(255,155,61,.1);
-}
-
-/* ======= SKIN 2: LIGHT EDITORIAL ======= */
-body[data-skin="light"]{
-  --bg: linear-gradient(180deg,#f7f9fe 0%, #ffffff 60%);
-  --header-bg: #ffffff;
-  --text: #0b1220;
-  --muted:#51607b;
-  --card:#ffffff;
-  --card-border:#e7ecf4;
-  --accent:#0b6cff;
-
-  --tag-debt:#c02626; --tag-debt-bg: rgba(192,38,38,.08);
-  --tag-gdp:#0f7a3a;  --tag-gdp-bg: rgba(15,122,58,.08);
-  --tag-infl:#c06714; --tag-infl-bg: rgba(192,103,20,.08);
-}
-
-/* ======= SKIN 3: GLASS & NEON ======= */
-body[data-skin="glass"]{
-  --bg:
-    radial-gradient(800px 500px at 15% -10%, rgba(66,178,255,.35), transparent 60%),
-    radial-gradient(900px 600px at 85% 110%, rgba(17,214,116,.25), transparent 60%),
-    #03050a;
-  --header-bg: rgba(10,14,24,.5);
-  --text: #ecf3ff;
-  --muted:#a8bad6;
-  --card: rgba(18,26,44,.55);
-  --card-border: rgba(255,255,255,.14);
-  --accent:#42b2ff;
-
-  --tag-debt:#ff5b6e; --tag-debt-bg: rgba(255,91,110,.12);
-  --tag-gdp:#4be39a;  --tag-gdp-bg: rgba(75,227,154,.12);
-  --tag-infl:#ffc36a; --tag-infl-bg: rgba(255,195,106,.12);
-  backdrop-filter: blur(0px); /* activaremos blur en cards */
-}
-
-/* ===== Layout general ===== */
-body { background: var(--bg); color: var(--text); }
-main.dashboard { flex: 1 0 auto; }
-.container { width: var(--w-container); margin-inline: auto; }
-
-/* ===== Header / Hero compacto ===== */
+/* ======== ENCABEZADO ======== */
 header {
-  position: sticky; top: 0; z-index: 50;
-  width: 100%;
-  background: var(--header-bg);
-  border-bottom: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-  box-shadow: var(--shadow-1);
+    text-align: center;
+    padding: 1rem;
 }
-header .container { display:flex; flex-direction: column; align-items:center; padding: 18px 0 14px; text-align:center; gap: 6px; }
 header h1 {
-  margin: 0;
-  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
-  letter-spacing: .3px;
-  font-weight: 800;
+    margin: 0;
+    font-size: 2rem;
 }
 header p {
-  margin: 0;
-  color: var(--muted);
-  font-size: clamp(.95rem, 1.6vw, 1.05rem);
+    font-size: 1rem;
+    opacity: 0.85;
 }
 
-/* ===== Hero separado del header (opcional) ===== */
-.hero { padding: 18px 0 4px; }
-.hero .container { text-align: center; }
-.hero h1 { margin:0 0 6px; font-size: clamp(1.6rem, 3vw, 2.2rem); }
-.hero .lead { color: var(--muted); margin:0; }
-
-/* ===== Tablero ===== */
+/* ======== DASHBOARD ======== */
 .dashboard {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 16px;
-  width: var(--w-container);
-  margin: 22px auto 18px;
-  align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
 }
 
-/* Tres columnas responsivas sin romper tu estructura */
-.column { display: grid; gap: 16px; min-width: 0; }
-.column:nth-of-type(1){ grid-column: span 4; }
-.column:nth-of-type(2){ grid-column: span 4; }
-.column:nth-of-type(3){ grid-column: span 4; }
-
-@media (max-width: 980px){
-  .column:nth-of-type(1),
-  .column:nth-of-type(2),
-  .column:nth-of-type(3){ grid-column: span 12; }
+/* ======== TARJETAS ======== */
+.counter-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow: hidden; /* evita desbordes */
 }
 
-/* ===== Cards ===== */
-.counter-card{
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  padding: 16px 16px 14px;
-  text-align: center;
-  box-shadow: var(--shadow-1);
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-  container-type: inline-size;
-}
-.counter-card:hover{
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
-  border-color: color-mix(in oklab, var(--accent) 35%, var(--card-border));
-}
-body[data-skin="glass"] .counter-card{
-  backdrop-filter: blur(10px) saturate(120%);
+/* ======== TÍTULOS ======== */
+.card-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
 }
 
-/* Etiquetas por tipo (color del número) */
-.counter-card.debt      { outline: 1px solid color-mix(in oklab, var(--tag-debt) 45%, transparent); }
-.counter-card.gdp       { outline: 1px solid color-mix(in oklab, var(--tag-gdp) 45%, transparent); }
-.counter-card.inflation { outline: 1px solid color-mix(in oklab, var(--tag-infl) 45%, transparent); }
-
-/* ===== Título ===== */
-.card-title{
-  margin: 0 0 6px;
-  font-size: .95rem;
-  letter-spacing: .06em;
-  color: var(--muted);
-  text-transform: uppercase;
-  font-weight: 800;
+/* ======== NÚMEROS ======== */
+.counter {
+    font-size: clamp(1.25rem, 6vw, 3rem);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
+    line-height: 1;
+    letter-spacing: -0.02em;
 }
 
-/* ===== Número ===== */
-.counter{
-  margin: 6px 0 4px;
-  font-weight: 900;
-  font-variant-numeric: tabular-nums lining-nums;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  font-size: clamp(1.25rem, 10cqi, 3.1rem);
-  max-width: 100%;
-  overflow-wrap: anywhere;
-}
-.debt .counter      { color: var(--tag-debt); }
-.gdp .counter       { color: var(--tag-gdp); }
-.inflation .counter { color: var(--tag-infl); }
-
-/* ===== Describe ===== */
-.explain{
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: .92rem;
-  line-height: 1.35;
+/* ======== DESCRIPCIÓN ======== */
+.explain {
+    font-size: 0.8rem;
+    opacity: 0.75;
+    margin-top: 0.5rem;
 }
 
-/* ===== Footer pegado ===== */
-footer{
-  margin-top: auto;
-  width: 100%;
-  background: var(--header-bg);
-  border-top: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
-  box-shadow: var(--shadow-1);
-}
-footer .container{
-  display:flex; align-items:center; justify-content:center; gap:8px;
-  padding: 14px 0;
-  color: var(--muted);
-  font-size: .95rem;
-}
-footer a{ color: var(--text); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-
-/* ===== Motion/Accesibilidad ===== */
-@media (prefers-reduced-motion: reduce){
-  *{ transition: none !important; animation: none !important; }
+/* ======== PIE DE PÁGINA ======== */
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    opacity: 0.8;
 }
 
-/* ===== Ajustes móviles ===== */
-@media (max-width: 720px){
-  header .container{ padding: 14px 0 12px; }
-  .dashboard{ gap: 14px; }
-  .counter-card{ padding: 14px; border-radius: 14px; }
-  .card-title{ font-size: .9rem; }
-  .counter{ font-size: clamp(1.1rem, 12cqi, 2.4rem); }
-  .explain{ font-size: .9rem; }
+/* ======== RESPONSIVE ======== */
+@media (max-width: 600px) {
+    header h1 { font-size: 1.5rem; }
+    .counter { font-size: clamp(1rem, 8vw, 2.2rem); }
 }
