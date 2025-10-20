@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuentes y Metodología - RDDebtClock 🇩🇴</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Fuentes y Metodología 📊</h1>
+    <p>Transparencia y trazabilidad de los datos publicados en <strong>RDDebtClock</strong>.</p>
+  </header>
+
+  <main class="dashboard" style="max-width:900px; margin:auto; text-align:left;">
+    <section class="counter-card">
+      <h2 class="card-title">1️⃣ Propósito del proyecto</h2>
+      <p><strong>RDDebtClock</strong> es un observatorio ciudadano que muestra los principales indicadores económicos de la República Dominicana. 
+      Todos los datos provienen de fuentes oficiales del Estado dominicano y organismos multilaterales reconocidos.</p>
+    </section>
+
+    <section class="counter-card">
+      <h2 class="card-title">2️⃣ Fuentes oficiales de datos</h2>
+      <ul>
+        <li><strong>Banco Central de la República Dominicana (BCRD)</strong> — PIB, inflación, tasa de política monetaria, reservas, remesas.</li>
+        <li><strong>Ministerio de Hacienda / Dirección de Crédito Público</strong> — Deuda pública total, interna y externa.</li>
+        <li><strong>Oficina Nacional de Estadística (ONE)</strong> — Población, empleo, indicadores sociales.</li>
+        <li><strong>Ministerio de Economía, Planificación y Desarrollo (MEPyD)</strong> — Balance fiscal, proyecciones macroeconómicas.</li>
+        <li><strong>Banco Mundial, FMI y CEPAL</strong> — Datos comparativos regionales (en desarrollo).</li>
+      </ul>
+    </section>
+
+    <section class="counter-card">
+      <h2 class="card-title">3️⃣ Frecuencia de actualización</h2>
+      <p>El archivo de datos (<code>data/data.json</code>) se actualiza manualmente una vez al mes y, en el futuro, de forma automática mediante integraciones con las APIs del Banco Central y del MEPyD.</p>
+      <p>Última actualización: <strong>8 de octubre de 2025</strong></p>
+    </section>
+
+    <section class="counter-card">
+      <h2 class="card-title">4️⃣ Cómo se calculan algunos indicadores</h2>
+      <ul>
+        <li><strong>Deuda per cápita:</strong> deuda total / población total estimada.</li>
+        <li><strong>Deuda % del PIB:</strong> (deuda total / PIB nominal) × 100.</li>
+        <li><strong>Variación del PIB:</strong> comparación interanual del PIB real trimestral.</li>
+        <li><strong>Remesas:</strong> sumatoria mensual en USD enviada por dominicanos en el exterior.</li>
+      </ul>
+    </section>
+
+    <section class="counter-card">
+      <h2 class="card-title">5️⃣ Aviso de responsabilidad</h2>
+      <p>Los datos presentados son con fines informativos y educativos. 
+      <strong>RDDebtClock</strong> no sustituye la información oficial ni emite juicios financieros o políticos. 
+      Los valores pueden diferir levemente debido a redondeos o actualizaciones de fuentes oficiales.</p>
+    </section>
+
+    <section class="counter-card">
+      <h2 class="card-title">6️⃣ Contacto y participación</h2>
+      <p>Si deseas colaborar, reportar errores o sugerir nuevos indicadores, puedes escribir a:</p>
+      <p><a href="mailto:reyesleone@gmail.com">reyesleone@gmail.com</a></p>
+    </section>
+
+    <p style="text-align:center; opacity:0.7; font-size:0.8rem;">© 2025 RDDebtClock — República Dominicana</p>
+  </main>
+
+  <footer>
+    <p><a href="index.html">← Volver al Inicio</a></p>
+  </footer>
+</body>
+</html>
