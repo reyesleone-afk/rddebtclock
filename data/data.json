@@ -1,67 +1,23 @@
-[
-  {
-    "id": "debt_total",
-    "nombre": "Deuda Pública Total",
-    "descripcion": "Monto total de la deuda del Sector Público No Financiero (SPNF).",
-    "unidad": "USD",
-    "valor": 60500000000,
-    "frecuencia": "Mensual",
-    "fuente": "MEPyD / Dirección de Crédito Público",
-    "fecha_actualizacion": "2025-10-08",
-    "link_fuente": "https://www.creditopublico.gob.do/",
-    "prioridad": 5,
-    "categoria": "Fiscal"
-  },
-  {
-    "id": "pib_total",
-    "nombre": "Producto Interno Bruto (PIB)",
-    "descripcion": "Valor total de la producción de bienes y servicios de RD.",
-    "unidad": "USD",
-    "valor": 128500000000,
-    "frecuencia": "Trimestral",
-    "fuente": "Banco Central de la República Dominicana (BCRD)",
-    "fecha_actualizacion": "2025-10-08",
-    "link_fuente": "https://www.bancentral.gov.do/",
-    "prioridad": 5,
-    "categoria": "Economía"
-  },
-  {
-    "id": "inflacion",
-    "nombre": "Inflación Anual",
-    "descripcion": "Variación promedio del Índice de Precios al Consumidor (IPC).",
-    "unidad": "%",
-    "valor": 3.7,
-    "frecuencia": "Mensual",
-    "fuente": "Banco Central de la República Dominicana (BCRD)",
-    "fecha_actualizacion": "2025-10-08",
-    "link_fuente": "https://www.bancentral.gov.do/",
-    "prioridad": 4,
-    "categoria": "Monetario"
-  },
-  {
-    "id": "remesas",
-    "nombre": "Remesas Recibidas",
-    "descripcion": "Dinero enviado por dominicanos en el exterior.",
-    "unidad": "USD",
-    "valor": 10200000000,
-    "frecuencia": "Mensual",
-    "fuente": "Banco Central de la República Dominicana (BCRD)",
-    "fecha_actualizacion": "2025-10-08",
-    "link_fuente": "https://www.bancentral.gov.do/",
-    "prioridad": 4,
-    "categoria": "Externo"
-  },
-  {
-    "id": "poblacion",
-    "nombre": "Población Total",
-    "descripcion": "Estimación oficial de habitantes en República Dominicana.",
-    "unidad": "Personas",
-    "valor": 11300000,
-    "frecuencia": "Anual",
-    "fuente": "Oficina Nacional de Estadística (ONE)",
-    "fecha_actualizacion": "2025-10-08",
-    "link_fuente": "https://www.one.gob.do/",
-    "prioridad": 4,
-    "categoria": "Demografía"
-  }
-]
+{
+  "meta":{"updated":"2026-09-07","primaryCutoff":"2026-07-31","population":11220000,"exchangeRate":58.6639,"debtBase":67827800000,"debtBaseDate":"2026-07-31T23:59:59-04:00","debtRatePerSecond":343},
+  "metrics":[
+    {"name":"Deuda externa","value":48115800000,"format":"usd","category":"fiscal","status":"official","tone":"red","period":"Jul 2026","description":"Obligaciones del SPNF con acreedores externos.","source":"Crédito Público","url":"https://www.creditopublico.gob.do/inicio/estadisticas"},
+    {"name":"Deuda interna","value":19712100000,"format":"usd","category":"fiscal","status":"official","tone":"amber","period":"Jul 2026","description":"Obligaciones del SPNF emitidas o contratadas internamente.","source":"Crédito Público","url":"https://www.creditopublico.gob.do/inicio/estadisticas"},
+    {"name":"Bonos externos","value":37981400000,"format":"usd","category":"fiscal","status":"official","tone":"red","period":"Jul 2026","description":"Saldo de bonos dentro de la deuda externa del Gobierno Central.","source":"Crédito Público","url":"https://www.creditopublico.gob.do/inicio/estadisticas"},
+    {"name":"Deuda externa / total","value":70.9,"format":"percent","category":"fiscal","status":"derived","period":"Jul 2026","description":"Participación de la deuda externa en el saldo total del SPNF.","source":"Cálculo RD Debt Clock","url":"fuentes.html"},
+    {"name":"Tasa promedio de la deuda","value":7.7,"format":"percent","category":"fiscal","status":"official","tone":"amber","period":"Jul 2026","description":"Tasa promedio ponderada del portafolio de deuda pública.","source":"Crédito Público","url":"https://www.creditopublico.gob.do/inicio/gestion_de_riesgos"},
+    {"name":"Madurez promedio","value":9.9,"format":"years","category":"fiscal","status":"official","period":"Jul 2026","description":"Tiempo promedio restante hasta el vencimiento de la deuda.","source":"Crédito Público","url":"https://www.creditopublico.gob.do/inicio/gestion_de_riesgos"},
+    {"name":"PIB nominal estimado","value":140721576763,"format":"usd","category":"economia","status":"derived","period":"2026","description":"Base implícita utilizada por Crédito Público para la razón deuda/PIB.","source":"Cálculo: deuda ÷ 48.2%","url":"fuentes.html"},
+    {"name":"Crecimiento IMAE","value":4.6,"format":"percentSigned","category":"economia","status":"official","tone":"green","period":"Jul 2026","description":"Variación interanual del indicador mensual de actividad económica.","source":"BCRD","url":"https://www.bancentral.gov.do/"},
+    {"name":"Crecimiento acumulado IMAE","value":4.5,"format":"percentSigned","category":"economia","status":"official","tone":"green","period":"Ene–Jul 2026","description":"Crecimiento acumulado de la actividad económica.","source":"BCRD","url":"https://www.bancentral.gov.do/"},
+    {"name":"Población estimada","value":11220000,"format":"integer","category":"economia","status":"estimate","period":"2026","description":"Base demográfica empleada para cálculos por habitante.","source":"ONE / estimación","url":"https://www.one.gob.do/"},
+    {"name":"Remesas recibidas","value":7316400000,"format":"usd","category":"externo","status":"official","tone":"green","period":"Ene–Jul 2026","description":"Flujos de remesas familiares recibidos en el período.","source":"BCRD","url":"https://www.bancentral.gov.do/"},
+    {"name":"Inversión extranjera directa","value":3276500000,"format":"usd","category":"externo","status":"official","tone":"green","period":"Ene–Jun 2026","description":"Flujos acumulados de inversión extranjera directa.","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6619-bcrd-informa-que-la-inversion-extranjera-directa-alcanzo-los-us32765-millones-al-cierre-de-junio-de-2026"},
+    {"name":"Tipo de cambio — compra","value":58.6639,"format":"dop","category":"externo","status":"official","period":"4 Sep 2026","description":"Promedio de compra del dólar estadounidense publicado por el BCRD.","source":"BCRD","url":"https://www.bancentral.gov.do/"},
+    {"name":"Tasa de política monetaria","value":5.25,"format":"percent","category":"monetario","status":"official","tone":"amber","period":"Sep 2026","description":"Tasa de referencia para las decisiones monetarias.","source":"BCRD","url":"https://www.bancentral.gov.do/"},
+    {"name":"Tasa activa banca múltiple","value":14.08,"format":"percent","category":"monetario","status":"official","tone":"amber","period":"Ago 2026","description":"Promedio ponderado de préstamos en banca múltiple.","source":"BCRD","url":"https://www.bancentral.gov.do/"},
+    {"name":"Tasa pasiva banca múltiple","value":7.37,"format":"percent","category":"monetario","status":"official","period":"Ago 2026","description":"Promedio ponderado pagado por depósitos en banca múltiple.","source":"BCRD","url":"https://www.bancentral.gov.do/"},
+    {"name":"Tasa interbancaria","value":8.45,"format":"percent","category":"monetario","status":"official","period":"Ago 2026","description":"Costo promedio de operaciones entre entidades financieras.","source":"BCRD","url":"https://www.bancentral.gov.do/"},
+    {"name":"Crédito privado","value":7.6,"format":"percentSigned","category":"monetario","status":"official","tone":"green","period":"Ago 2026","description":"Variación interanual del crédito total al sector privado.","source":"BCRD","url":"https://www.bancentral.gov.do/"}
+  ]
+}
