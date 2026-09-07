@@ -1,104 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="El reloj de la economía dominicana: sigue la Deuda Pública, PIB, inflación y otros indicadores clave de la República Dominicana.">
-    <title>RDDebtClock - Economía RD en Tiempo Real</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Tablero independiente de deuda pública y economía de la República Dominicana con datos oficiales y metodología transparente."><meta name="theme-color" content="#071019">
+  <title>RD Debt Clock — La economía dominicana en datos</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"><script src="script.js" defer></script>
 </head>
-
 <body>
-    <!-- ======= MENÚ SUPERIOR ======= -->
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="nav-logo">RDDebtClock 🇩🇴</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="fuentes.html">Fuentes y Metodología</a></li>
-      <li><a href="mailto:reyesleone@gmail.com">Contacto</a></li>
-    </ul>
-  </div>
-</nav>
-
-    <header>
-        <h1>RDDebtClock 🇩🇴</h1>
-        <p>El reloj de la economía dominicana: Deuda, PIB y más – Actualizado en tiempo real</p>
-    </header>
-
-    <main class="dashboard">
-        <!-- Columna 1: Deuda -->
-        <section class="column" aria-labelledby="debt-heading">
-            <div class="counter-card debt">
-                <h2 id="debt-heading" class="card-title">DEUDA PÚBLICA TOTAL</h2>
-                <div id="debt-total" class="counter" data-value="605000000000" aria-live="polite">US$60,500,000,000</div>
-                <p class="explain">El total que debe el gobierno de RD (Fuente: DGCP, Oct 2025)</p>
-            </div>
-
-            <div class="counter-card">
-                <h2 class="card-title">DEUDA POR HABITANTE</h2>
-                <div id="debt-per-capita" class="counter" data-value="5350" aria-live="polite">US$5,350</div>
-                <p class="explain">Tu parte aproximada si divides la deuda entre 11.3 millones de dominicanos</p>
-            </div>
-
-            <div class="counter-card">
-                <h2 class="card-title">DEUDA % DEL PIB</h2>
-                <div id="debt-gdp" class="counter" data-value="46.9" aria-live="polite">46.9%</div>
-                <p class="explain">Cuán grande es la deuda comparada con toda la economía de RD</p>
-            </div>
-        </section>
-
-        <!-- Columna 2: PIB -->
-        <section class="column" aria-labelledby="gdp-heading">
-            <div class="counter-card gdp">
-                <h2 id="gdp-heading" class="card-title">PIB TOTAL ANUAL</h2>
-                <div id="gdp-total" class="counter" data-value="128500000000" aria-live="polite">US$128,500,000,000</div>
-                <p class="explain">El tamaño total de la economía dominicana (Fuente: BCRD, Est. 2025)</p>
-            </div>
-
-            <div class="counter-card">
-                <h2 class="card-title">CRECIMIENTO PIB</h2>
-                <div id="gdp-growth" class="counter" data-value="4.8" aria-live="polite">+4.8%</div>
-                <p class="explain">Cuánto creció la economía este año (buena noticia para empleos y salarios)</p>
-            </div>
-
-            <div class="counter-card">
-                <h2 class="card-title">POBLACIÓN TOTAL</h2>
-                <div id="population" class="counter" data-value="11300000" aria-live="polite">11,300,000</div>
-                <p class="explain">Número de habitantes en RD (usado para calcular cifras per cápita)</p>
-            </div>
-        </section>
-
-        <!-- Columna 3: Inflación, Remesas, Tasa -->
-        <section class="column" aria-labelledby="indicators-heading">
-            <div class="counter-card inflation">
-                <h2 id="indicators-heading" class="card-title">INFLACIÓN ANUAL</h2>
-                <div id="inflation" class="counter" data-value="3.7" aria-live="polite">3.7%</div>
-                <p class="explain">Cuánto suben los precios al año (baja = más poder de compra para ti)</p>
-            </div>
-
-            <div class="counter-card">
-                <h2 class="card-title">REMESAS ANUALES</h2>
-                <div id="remesas" class="counter" data-value="10200000000" aria-live="polite">US$10,200,000,000</div>
-                <p class="explain">Dinero que envían dominicanos en el exterior (motor clave de la economía)</p>
-            </div>
-
-            <div class="counter-card">
-                <h2 class="card-title">TASA DE INTERÉS BCRD</h2>
-                <div id="interest-rate" class="counter" data-value="5.50" aria-live="polite">5.50%</div>
-                <p class="explain">La tasa base del Banco Central (afecta préstamos y ahorros)</p>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-  <p>
-    Actualizado: 
-    <time datetime="2025-10-08">8 de Octubre 2025</time> | 
-    Fuentes: BCRD, DGCP, MEPyD |
-    <a href="https://www.bancentral.gov.do/" target="_blank" rel="noopener noreferrer">Más Datos</a> |
-    <a href="fuentes.html" style="color:#00ccff; text-decoration:none; font-weight:bold;">Fuentes y Metodología</a>
-  </p>
-</footer>
-
+  <a class="skip-link" href="#tablero">Saltar al tablero</a>
+  <header class="topbar"><a class="brand" href="index.html" aria-label="RD Debt Clock, inicio"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>RD <strong>DEBT CLOCK</strong></span></a><nav aria-label="Navegación principal"><a class="active" href="#tablero">Tablero</a><a href="#metodologia">Metodología</a><a href="fuentes.html">Fuentes</a></nav><div class="live-badge"><span></span> Datos vigentes</div></header>
+  <main id="tablero">
+    <section class="masthead" aria-labelledby="page-title"><div><p class="eyebrow">RELOJ FISCAL DE LA REPÚBLICA DOMINICANA</p><h1 id="page-title">La deuda pública, <em>en perspectiva.</em></h1><p class="intro">Datos oficiales convertidos en un tablero claro. Los contadores móviles son estimaciones entre publicaciones y siempre se identifican como tales.</p></div><div class="asof"><span>FECHA DE CORTE PRINCIPAL</span><strong>31 JUL 2026</strong><small>Última revisión: 7 sep 2026</small></div></section>
+    <section class="hero-grid" aria-label="Indicadores fiscales principales">
+      <article class="debt-hero"><div class="metric-head"><span>DEUDA PÚBLICA SPNF</span><span class="tag estimate">ESTIMACIÓN</span></div><div class="hero-number" id="debt-live" aria-live="off">US$67,827,800,000</div><div class="ticker-row"><span><b id="debt-second">US$343</b> por segundo*</span><span><b id="debt-day">US$29.6 MM</b> por día*</span></div><p>*Interpolación basada en la variación del saldo oficial 2025–julio 2026; no representa nueva deuda registrada cada segundo.</p></article>
+      <article class="ratio-card"><div class="donut" style="--value:48.2"><span>48.2<small>%</small></span></div><div><span class="label">DEUDA / PIB</span><strong>48.2%</strong><p>Por cada RD$100 producidos, la deuda equivale a RD$48.20.</p></div></article>
+      <article class="per-person"><span class="label">DEUDA POR HABITANTE</span><strong id="debt-capita">US$6,046</strong><span class="peso-value" id="debt-capita-dop">RD$354,700</span><p>Indicador derivado: deuda total ÷ población estimada.</p></article>
+    </section>
+    <div class="section-bar"><div><span class="pulse"></span><strong>Tablero nacional</strong><small id="result-count">18 indicadores</small></div><div class="filters" role="group" aria-label="Filtrar indicadores"><button class="selected" data-filter="all">Todos</button><button data-filter="fiscal">Fiscal</button><button data-filter="economia">Economía</button><button data-filter="externo">Sector externo</button><button data-filter="monetario">Monetario</button></div></div>
+    <section id="metrics-grid" class="metrics-grid" aria-label="Indicadores económicos"></section>
+    <section id="metodologia" class="methodology"><div><p class="eyebrow">TRANSPARENCIA PRIMERO</p><h2>Cómo leer este reloj</h2><p>RD Debt Clock no es una entidad gubernamental. Reúne cifras públicas y muestra el período exacto de cada indicador. Los datos oficiales permanecen fijos hasta una nueva publicación; solo los valores marcados como “estimación” avanzan entre cortes.</p></div><ol><li><span>01</span><div><strong>Dato base oficial</strong><p>Se registra el valor, período, unidad y enlace de la institución que lo publica.</p></div></li><li><span>02</span><div><strong>Cálculo reproducible</strong><p>Las cifras derivadas muestran su fórmula. Las estimaciones usan una tasa publicada y una fecha base.</p></div></li><li><span>03</span><div><strong>Recalibración</strong><p>Cuando aparece un nuevo dato oficial, el contador se ajusta y conserva la fecha del corte.</p></div></li></ol></section>
+  </main>
+  <footer><div><strong>RD DEBT CLOCK</strong><p>Un proyecto independiente de educación y transparencia económica.</p></div><div><a href="fuentes.html">Fuentes y metodología</a><a href="mailto:reyesleone@gmail.com">Contacto</a></div><small>© <span id="year"></span> RD Debt Clock · Las cifras no constituyen asesoría financiera.</small></footer>
+</body></html>
