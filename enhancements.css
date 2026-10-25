@@ -1,0 +1,10 @@
+.noscript-note{margin:.8rem 0;color:var(--muted);font-size:.8rem}
+.share-panel{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;margin:0 0 4rem;padding:2rem;border:1px solid var(--line);background:linear-gradient(120deg,rgba(24,214,229,.08),rgba(11,24,34,.65))}
+.share-panel h2{margin:.15rem 0;font-size:clamp(1.5rem,3vw,2.4rem)}
+.share-panel p:last-child{margin:.5rem 0 0;color:var(--muted)}
+.share-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:.6rem}
+.button{border:1px solid var(--cyan);background:transparent;color:var(--ink);padding:.7rem 1rem;border-radius:4px;text-decoration:none;cursor:pointer;font:inherit;font-size:.82rem}
+.button:hover,.button.primary{background:var(--cyan);color:#041016}
+.share-actions [role="status"]{width:100%;text-align:right;color:var(--green);font-size:.75rem;min-height:1.1rem}
+@media(max-width:760px){.share-panel{grid-template-columns:1fr}.share-actions{justify-content:flex-start}.share-actions [role="status"]{text-align:left}}
+@media(max-width:480px){.share-panel{padding:1.2rem}.share-actions{align-items:stretch;flex-direction:column}.button{text-align:center}}
