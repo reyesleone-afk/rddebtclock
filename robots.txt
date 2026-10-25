@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rddebtclock.com/sitemap.xml
