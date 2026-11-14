@@ -11,18 +11,8 @@ const metricInfo={
 };
 let current='executed',selected=null,records,features;
 
-function decodeArc(topology,index){
-  const reverse=index<0; const arc=topology.arcs[reverse?~index:index]; let x=0,y=0;
-  const points=arc.map(([dx,dy])=>{x+=dx;y+=dy;return [x*topology.transform.scale[0]+topology.transform.translate[0],y*topology.transform.scale[1]+topology.transform.translate[1]]});
-  return reverse?points.reverse():points;
-}
-function geometryRings(topology,g){
-  const polys=g.type==='Polygon'?[g.arcs]:g.arcs;
-  return polys.map(poly=>poly.map(ring=>ring.flatMap((a,i)=>{const pts=decodeArc(topology,a);return i?pts.slice(1):pts;})));
-}
-function buildFeatures(topology){
-  const object=Object.values(topology.objects)[0];
-  return object.geometries.map(g=>({name:g.properties.TOPONIMIA,rings:geometryRings(topology,g)}));
+function buildFeatures(geojson){
+  return geojson.features.map(f=>({name:f.properties.name,rings:f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates}));
 }
 function bounds(fs){let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;fs.forEach(f=>f.rings.flat(2).forEach(([x,y])=>{minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y)}));return {minX,minY,maxX,maxY};}
 function pathFor(f,b,w=1000,h=520){const pad=18,s=Math.min((w-pad*2)/(b.maxX-b.minX),(h-pad*2)/(b.maxY-b.minY));return f.rings.map(poly=>poly.map(ring=>ring.map(([x,y],i)=>`${i?'L':'M'}${(pad+(x-b.minX)*s).toFixed(1)},${(h-pad-(y-b.minY)*s).toFixed(1)}`).join('')+'Z').join('')).join('');}
@@ -38,4 +28,4 @@ function render(){
 function select(d,rerender=true){selected=d.name;if(rerender)render();const info=metricInfo[current];document.getElementById('province-name').textContent=d.name;document.getElementById('detail-label').textContent=info.label;document.getElementById('detail-value').textContent=formatMetric(current,d);document.getElementById('detail-period').textContent=info.period;document.getElementById('detail-pop').textContent=people(d.population);document.getElementById('detail-executed').textContent=money(d.executed);document.getElementById('detail-planned').textContent=money(d.planned);document.getElementById('detail-capita').textContent=`RD$${Math.round(perCapita(d.executed,d.population)).toLocaleString('es-DO')}`;}
 function renderRanking(){const info=metricInfo[current],top=[...records].sort((a,b)=>info.field(b)-info.field(a)).slice(0,10);document.getElementById('ranking-title').textContent=`Mayores valores · ${info.label}`;document.getElementById('ranking').innerHTML=top.map((d,i)=>`<li><span>${String(i+1).padStart(2,'0')}</span><span>${d.name}</span><b>${formatMetric(current,d)}</b></li>`).join('');}
 document.querySelectorAll('[data-metric]').forEach(btn=>btn.addEventListener('click',()=>{current=btn.dataset.metric;document.querySelectorAll('[data-metric]').forEach(b=>b.classList.toggle('selected',b===btn));render()}));
-Promise.all([fetch('data/provincias.json').then(r=>r.json()),fetch('data/provinces.topo.json').then(r=>r.json())]).then(([data,topology])=>{records=data.provinces;features=buildFeatures(topology);document.getElementById('map-loading').remove();document.getElementById('map-content').hidden=false;render();}).catch(()=>{document.getElementById('map-loading').className='map-error';document.getElementById('map-loading').textContent='No fue posible cargar el mapa. Intenta actualizar la página.'});
+Promise.all([fetch('data/provincias.json').then(r=>r.json()),fetch('data/provinces.geojson').then(r=>r.json())]).then(([data,geojson])=>{records=data.provinces;features=buildFeatures(geojson);document.getElementById('map-loading').remove();document.getElementById('map-content').hidden=false;render();}).catch(()=>{document.getElementById('map-loading').className='map-error';document.getElementById('map-loading').textContent='No fue posible cargar el mapa. Intenta actualizar la página.'});
