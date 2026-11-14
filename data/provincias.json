@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "updated": "2026-11-14",
+    "populationPeriod": "Censo 2022",
+    "executedPeriod": "Ene–Sep 2026",
+    "plannedPeriod": "Proyecto PGE 2027",
+    "units": {"population": "personas", "executed": "millones de RD$", "planned": "millones de RD$"},
+    "notes": [
+      "La inversión ejecutada corresponde al gasto devengado territorializable registrado en SIGEF.",
+      "La inversión 2027 es formulada; no equivale a ejecución.",
+      "Los proyectos multiprovinciales se excluyen para evitar asignarlos arbitrariamente."
+    ],
+    "sources": {
+      "population": {"name": "ONE — X Censo Nacional de Población y Vivienda 2022", "url": "https://www.one.gob.do/media/mm1jqoas/informe-b%C3%A1sico-xcnpv-web.pdf"},
+      "executed": {"name": "DIGEPRES — Ejecución presupuestaria enero–septiembre 2026", "url": "https://digepres.gob.do/wp-content/uploads/2026/10/Informe-Ejecucion-Presupuestaria-Enero-Septiembre-2026.pdf"},
+      "planned": {"name": "DIGEPRES — Presupuesto Ciudadano 2027", "url": "https://digepres.gob.do/wp-content/uploads/2026/10/Presupuesto-Ciudadano-2027_compressed-1.pdf"},
+      "boundaries": {"name": "GeoDOM — división provincial", "url": "https://geodom.adatar.do/sf/"}
+    }
+  },
+  "provinces": [
+    {"name":"Distrito Nacional","population":1029110,"executed":9389.4,"planned":13021.7},
+    {"name":"Azua","population":240209,"executed":2267.7,"planned":2041.8},
+    {"name":"Baoruco","population":108717,"executed":321.3,"planned":1208.7},
+    {"name":"Barahona","population":200886,"executed":857.9,"planned":6310.8},
+    {"name":"Dajabón","population":74810,"executed":1742.1,"planned":2441.8},
+    {"name":"Duarte","population":308353,"executed":2040.5,"planned":2098.8},
+    {"name":"Elías Piña","population":64614,"executed":658.5,"planned":747.2},
+    {"name":"El Seibo","population":99169,"executed":791.0,"planned":1555.8},
+    {"name":"Espaillat","population":241058,"executed":771.5,"planned":2200.5},
+    {"name":"Independencia","population":60689,"executed":320.3,"planned":1314.9},
+    {"name":"La Altagracia","population":446060,"executed":1298.9,"planned":3393.4},
+    {"name":"La Romana","population":287914,"executed":332.4,"planned":1397.3},
+    {"name":"La Vega","population":442719,"executed":1718.5,"planned":2489.9},
+    {"name":"María Trinidad Sánchez","population":156633,"executed":1898.9,"planned":1647.6},
+    {"name":"Monte Cristi","population":123519,"executed":2428.6,"planned":2995.9},
+    {"name":"Pedernales","population":34375,"executed":3090.2,"planned":5252.8},
+    {"name":"Peravia","population":209372,"executed":641.7,"planned":2275.7},
+    {"name":"Puerto Plata","population":338355,"executed":1343.6,"planned":2764.1},
+    {"name":"Hermanas Mirabal","population":96441,"executed":432.0,"planned":363.0},
+    {"name":"Samaná","population":111987,"executed":848.8,"planned":381.7},
+    {"name":"San Cristóbal","population":688828,"executed":2040.7,"planned":4316.2},
+    {"name":"San Juan","population":244667,"executed":526.9,"planned":698.9},
+    {"name":"San Pedro de Macorís","population":337146,"executed":636.2,"planned":2017.3},
+    {"name":"Sánchez Ramírez","population":162642,"executed":1301.2,"planned":2317.0},
+    {"name":"Santiago","population":1074679,"executed":4718.4,"planned":14041.0},
+    {"name":"Santiago Rodríguez","population":64635,"executed":364.6,"planned":790.5},
+    {"name":"Valverde","population":184069,"executed":718.8,"planned":1104.5},
+    {"name":"Monseñor Nouel","population":195547,"executed":802.3,"planned":1705.0},
+    {"name":"Monte Plata","population":205498,"executed":1487.8,"planned":2487.2},
+    {"name":"Hato Mayor","population":100133,"executed":1814.4,"planned":1265.7},
+    {"name":"San José de Ocoa","population":69082,"executed":1050.3,"planned":980.1},
+    {"name":"Santo Domingo","population":2769588,"executed":16050.7,"planned":15822.5}
+  ]
+}
