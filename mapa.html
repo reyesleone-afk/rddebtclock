@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Mapa interactivo de población e inversión pública por provincia de República Dominicana, con fuentes oficiales y metodología verificable.">
+  <link rel="canonical" href="https://rddebtclock.com/mapa.html"><meta name="theme-color" content="#071019">
+  <meta property="og:type" content="website"><meta property="og:locale" content="es_DO"><meta property="og:site_name" content="RD Debt Clock"><meta property="og:title" content="Mapa territorial de República Dominicana — RD Debt Clock"><meta property="og:description" content="Explora población e inversión pública ejecutada y formulada por provincia."><meta property="og:url" content="https://rddebtclock.com/mapa.html"><meta property="og:image" content="https://rddebtclock.com/og-card.png">
+  <title>Mapa territorial de República Dominicana — RD Debt Clock</title>
+  <link rel="stylesheet" href="style.css?v=20261105b"><link rel="stylesheet" href="enhancements.css"><link rel="stylesheet" href="mapa.css?v=20261114"><script src="mapa.js?v=20261114" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#mapa">Saltar al mapa</a>
+  <header class="topbar"><a class="brand" href="/" aria-label="RD Debt Clock, inicio"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>RD <strong>DEBT CLOCK</strong></span></a><nav aria-label="Navegación principal"><a href="/">Tablero</a><a class="active" href="mapa.html">Mapa territorial</a><a href="fuentes.html">Fuentes</a></nav><div class="live-badge"><span></span> Datos territoriales</div></header>
+  <main id="mapa" class="map-page">
+    <section class="masthead"><div class="map-intro"><p class="eyebrow">REPÚBLICA DOMINICANA PROVINCIA POR PROVINCIA</p><h1>Mapa territorial <em>interactivo.</em></h1><p class="intro">Compara población censada, inversión pública ejecutada, inversión formulada para 2027 e inversión por habitante. Haz clic en una provincia para ver su ficha.</p></div><div class="asof"><span>ÚLTIMA REVISIÓN</span><strong>14 NOV 2026</strong><small>32 demarcaciones</small></div></section>
+    <div class="map-controls" role="group" aria-label="Seleccionar indicador"><button data-metric="population">Población</button><button class="selected" data-metric="executed">Inversión ejecutada 2026</button><button data-metric="planned">Inversión formulada 2027</button><button data-metric="percapita">Inversión por habitante</button></div>
+    <div id="map-loading" class="map-loading">Cargando mapa territorial…</div>
+    <div id="map-content" hidden>
+      <section class="map-layout">
+        <div class="map-panel"><svg id="province-map" viewBox="0 0 1000 520" aria-label="Mapa de provincias de República Dominicana"></svg><div class="map-legend"><span id="legend-min"></span><span class="legend-ramp"></span><span id="legend-max"></span></div></div>
+        <aside class="province-panel" aria-live="polite"><p class="eyebrow">FICHA PROVINCIAL</p><h2 id="province-name">Provincia</h2><span id="detail-label" class="label"></span><div id="detail-value" class="detail-value"></div><p id="detail-period" class="detail-period"></p><div class="detail-grid"><div><span>POBLACIÓN · CENSO 2022</span><strong id="detail-pop"></strong></div><div><span>INVERSIÓN EJECUTADA</span><strong id="detail-executed"></strong></div><div><span>INVERSIÓN FORMULADA 2027</span><strong id="detail-planned"></strong></div><div><span>EJECUTADA POR HABITANTE</span><strong id="detail-capita"></strong></div></div><p class="detail-note">Los montos provinciales excluyen proyectos multiprovinciales. La inversión 2027 es una formulación presupuestaria y no debe interpretarse como gasto ya ejecutado.</p></aside>
+      </section>
+      <section class="ranking-panel"><header><div><p class="eyebrow">COMPARACIÓN TERRITORIAL</p><h2 id="ranking-title"></h2></div><small>Primeras 10 provincias</small></header><ol id="ranking"></ol></section>
+      <section class="map-notes"><h2>Fuentes y alcance</h2><p><strong>Población:</strong> X Censo Nacional de Población y Vivienda 2022 de la ONE. <strong>Inversión ejecutada:</strong> gasto devengado enero–septiembre de 2026 registrado en SIGEF y publicado por DIGEPRES. <strong>Inversión formulada:</strong> Proyecto PGE 2027. La inversión por habitante es un cálculo derivado de RD Debt Clock.</p><p><a href="https://www.one.gob.do/media/mm1jqoas/informe-b%C3%A1sico-xcnpv-web.pdf" target="_blank" rel="noopener">ONE — Censo 2022 ↗</a> · <a href="https://digepres.gob.do/wp-content/uploads/2026/10/Informe-Ejecucion-Presupuestaria-Enero-Septiembre-2026.pdf" target="_blank" rel="noopener">DIGEPRES — Ejecución 2026 ↗</a> · <a href="https://digepres.gob.do/wp-content/uploads/2026/10/Presupuesto-Ciudadano-2027_compressed-1.pdf" target="_blank" rel="noopener">DIGEPRES — PGE 2027 ↗</a> · <a href="https://geodom.adatar.do/sf/" target="_blank" rel="noopener">GeoDOM — límites provinciales ↗</a></p></section>
+    </div>
+  </main>
+  <footer><div><strong>RD DEBT CLOCK</strong><p>Un proyecto independiente de educación y transparencia económica.</p></div><div><a href="/">Tablero</a><a href="fuentes.html">Fuentes</a><a href="mailto:rddebtclock@gmail.com">Contacto</a></div><small>Datos territoriales con períodos y fuentes diferenciados.</small></footer>
+</body></html>
