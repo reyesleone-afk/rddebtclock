@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',()=>{const consent=document.querySelector('#newsletter-consent');const submit=document.querySelector('#newsletter-submit');if(consent&&submit){consent.addEventListener('change',()=>{submit.dataset.consent=consent.checked?'yes':'no'})}});
