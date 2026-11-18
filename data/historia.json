@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "title": "Historia económica de República Dominicana",
+    "coverage": "2000–2026",
+    "updated": "2026-11-18",
+    "phase": "Base inicial",
+    "methodology": "Cada valor conserva su período real. Los datos parciales de 2026 no se presentan como cierres anuales y los vacíos permanecen como no disponibles."
+  },
+  "indicators": [
+    {"id":"gdp_nominal_usd","name":"PIB nominal","unit":"US$","format":"usd","category":"Economía"},
+    {"id":"activity_growth","name":"Crecimiento de la actividad","unit":"%","format":"percentSigned","category":"Economía"},
+    {"id":"population","name":"Población","unit":"personas","format":"integer","category":"Economía"},
+    {"id":"employment","name":"Personas ocupadas","unit":"personas","format":"integer","category":"Empleo"},
+    {"id":"unemployment","name":"Desocupación abierta","unit":"%","format":"percent","category":"Empleo"},
+    {"id":"inflation","name":"Inflación interanual","unit":"%","format":"percent","category":"Precios"},
+    {"id":"debt_usd","name":"Deuda pública SPNF","unit":"US$","format":"usd","category":"Fiscal"},
+    {"id":"debt_gdp","name":"Deuda / PIB","unit":"%","format":"percent","category":"Fiscal"},
+    {"id":"remittances","name":"Remesas recibidas","unit":"US$","format":"usd","category":"Sector externo"},
+    {"id":"fdi","name":"Inversión extranjera directa","unit":"US$","format":"usd","category":"Sector externo"},
+    {"id":"reserves","name":"Reservas internacionales brutas","unit":"US$","format":"usd","category":"Sector externo"},
+    {"id":"fx_sell","name":"Tipo de cambio — venta","unit":"RD$/US$","format":"dop","category":"Sector externo"}
+  ],
+  "years": {
+    "2000":{}, "2001":{}, "2002":{}, "2003":{}, "2004":{}, "2005":{},
+    "2006":{}, "2007":{}, "2008":{}, "2009":{}, "2010":{}, "2011":{},
+    "2012":{}, "2013":{}, "2014":{}, "2015":{}, "2016":{}, "2017":{},
+    "2018":{}, "2019":{}, "2020":{}, "2021":{}, "2022":{}, "2023":{},
+    "2024":{}, "2025":{},
+    "2026": {
+      "gdp_nominal_usd":{"value":145026700000,"period":"Estimación 2026","status":"estimate","label":"Estimación","source":"Crédito Público","url":"https://www.creditopublico.gob.do/inicio/novedades?codigo=2026091615","note":"PIB nominal base 2018 estimado para el cálculo deuda/PIB; no es cierre anual observado."},
+      "activity_growth":{"value":4.6,"period":"Ene–Sep 2026","status":"preliminary","label":"Preliminar","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6705-valdez-albizu-anuncio-que-la-economia-dominicana-crecio-56--interanual-en-septiembre-2026","note":"Crecimiento promedio acumulado del IMAE; no equivale al crecimiento anual del PIB."},
+      "population":{"value":11609500,"period":"2026","status":"estimate","label":"Estimación","source":"ONU — WPP 2024","url":"https://population.un.org/wpp/","note":"Estimación demográfica anual utilizada en los cálculos por habitante."},
+      "employment":{"value":5271005,"period":"Abr–Jun 2026","status":"preliminary","label":"Preliminar","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6666","note":"Resultado de la Encuesta Nacional Continua de Fuerza de Trabajo."},
+      "unemployment":{"value":5.3,"period":"Abr–Jun 2026","status":"preliminary","label":"Preliminar","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6666","note":"Desocupación abierta del trimestre; no es promedio anual."},
+      "inflation":{"value":5.12,"period":"Sep 2026","status":"official","label":"Oficial","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6694-bcrd-informa-que-la-variacion-mensual-del-ipc-de-septiembre-fue-de-033-","note":"Variación interanual del IPC al cierre de septiembre; no es inflación de diciembre a diciembre."},
+      "debt_usd":{"value":67649700000,"period":"Ago 2026","status":"official","label":"Oficial","source":"Crédito Público","url":"https://www.creditopublico.gob.do/inicio/novedades?codigo=2026091615","note":"Saldo del Sector Público No Financiero al cierre de agosto."},
+      "debt_gdp":{"value":46.6,"period":"Ago 2026 / PIB estimado 2026","status":"derived","label":"Derivado","source":"Crédito Público / cálculo RD Debt Clock","url":"https://www.creditopublico.gob.do/inicio/novedades?codigo=2026091615","note":"Saldo de deuda dividido entre el PIB nominal estimado utilizado por Crédito Público."},
+      "remittances":{"value":9489800000,"period":"Ene–Sep 2026","status":"preliminary","label":"Preliminar","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6691-bcrd-informa-que-los-flujos-de-remesas-alcanzaron-los-us94898-millones-en-el-periodo-eneroseptiembre-de-2026","note":"Flujo acumulado parcial; no es total anual."},
+      "fdi":{"value":3275100000,"period":"Ene–Jun 2026","status":"preliminary","label":"Preliminar revisado","source":"BCRD","url":"https://cdn.bancentral.gov.do/documents/publicaciones-economicas/informe-de-la-economia-dominicana/documents/infeco_definitivo2026-06.pdf","note":"Flujo acumulado del primer semestre."},
+      "reserves":{"value":15047200000,"period":"Oct 2026","status":"preliminary","label":"Preliminar","source":"BCRD","url":"https://cdn.bancentral.gov.do/documents/estadisticas/sector-externo/documents/reservas_internacionales.xlsx","note":"Saldo de reservas internacionales brutas; no promedio anual."},
+      "fx_sell":{"value":61.0459,"period":"4 Nov 2026","status":"official","label":"Oficial","source":"BCRD","url":"https://www.bancentral.gov.do/SectorExterno/HistoricoTasas","note":"Promedio de venta publicado para la fecha indicada; no promedio anual."}
+    }
+  },
+  "contexts": {
+    "2026": "Los valores disponibles para 2026 corresponden a cortes parciales y a una estimación de PIB. Esta ficha sirve como punto de partida y no debe interpretarse como cierre anual.",
+    "default": "El contexto documentado para este año todavía no ha sido incorporado. Se añadirá junto con las series oficiales y sus notas metodológicas."
+  }
+}
