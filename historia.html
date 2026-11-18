@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Historia económica de República Dominicana de 2000 a 2026: selección y comparación de años, gráficos, contexto y fuentes verificables.">
+  <meta name="theme-color" content="#071019">
+  <link rel="canonical" href="https://rddebtclock.com/historia.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_DO">
+  <meta property="og:site_name" content="RD Debt Clock">
+  <meta property="og:title" content="Historia económica de República Dominicana — RD Debt Clock">
+  <meta property="og:description" content="Explora y compara indicadores económicos por año con fuentes y metodología visibles.">
+  <meta property="og:url" content="https://rddebtclock.com/historia.html">
+  <meta property="og:image" content="https://rddebtclock.com/og-card.png">
+  <title>Historia económica de República Dominicana — RD Debt Clock</title>
+  <link rel="stylesheet" href="style.css?v=20261105b">
+  <link rel="stylesheet" href="historia.css?v=20261118">
+  <script src="historia.js?v=20261118" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Dataset","name":"Historia económica de República Dominicana — RD Debt Clock","description":"Base progresiva de indicadores económicos históricos con períodos, estados, fuentes y notas metodológicas visibles.","url":"https://rddebtclock.com/historia.html","inLanguage":"es-DO","dateModified":"2026-11-18","temporalCoverage":"2000/2026","spatialCoverage":{"@type":"Country","name":"República Dominicana"},"distribution":{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://rddebtclock.com/data/historia.json"}}</script>
+</head>
+<body>
+  <a class="skip-link" href="#explorador">Saltar al explorador histórico</a>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="RD Debt Clock, inicio"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>RD <strong>DEBT CLOCK</strong></span></a>
+    <nav aria-label="Navegación principal"><a href="/">Tablero</a><a href="mapa.html">Mapa</a><a class="active" href="historia.html">Historia</a><a href="boletin.html">Boletín</a><a href="ediciones.html">Ediciones</a><a href="fuentes.html">Fuentes</a></nav>
+    <div class="live-badge"><span></span> Base inicial · 18 nov 2026</div>
+  </header>
+
+  <main id="explorador" class="history-shell">
+    <section class="history-hero">
+      <div><p class="eyebrow">REPÚBLICA DOMINICANA · 2000–2026</p><h1>Historia económica, <em>año por año.</em></h1><p>Una base progresiva para observar cambios, comparar períodos y conservar la metodología de cada serie. Cuando un dato todavía no ha sido verificado, se muestra como “no disponible”.</p></div>
+      <aside><span>ETAPA ACTUAL</span><strong>Base inicial</strong><small>12 indicadores · 27 años preparados</small></aside>
+    </section>
+
+    <section class="history-notice" aria-label="Alcance de esta versión"><strong>Primera entrega</strong><p>La infraestructura cubre 2000–2026. Por ahora solo contiene valores ya verificados en el tablero de 2026; las series anuales se incorporarán gradualmente desde fuentes oficiales.</p></section>
+
+    <section class="history-controls" aria-labelledby="controls-title">
+      <div><p class="eyebrow">EXPLORAR Y COMPARAR</p><h2 id="controls-title">Selecciona los períodos</h2></div>
+      <label>Año principal<select id="year-primary"></select></label>
+      <label>Comparar con<select id="year-compare"></select></label>
+      <label>Indicador del gráfico<select id="chart-metric"></select></label>
+    </section>
+
+    <section aria-labelledby="snapshot-title">
+      <div class="history-section-head"><div><p class="eyebrow">FICHA ANUAL</p><h2 id="snapshot-title">Indicadores de <span id="selected-year">2026</span></h2></div><span id="availability-summary" class="coverage-pill"></span></div>
+      <div id="history-cards" class="history-cards" aria-live="polite"></div>
+    </section>
+
+    <section class="comparison-panel" aria-labelledby="comparison-title">
+      <div class="history-section-head"><div><p class="eyebrow">DOS MOMENTOS</p><h2 id="comparison-title">Comparación histórica</h2></div><p>Los cambios solo se calculan cuando ambos años contienen datos compatibles.</p></div>
+      <div class="table-wrap"><table><thead><tr><th>Indicador</th><th id="head-primary">2026</th><th id="head-compare">2020</th><th>Cambio</th></tr></thead><tbody id="comparison-body"></tbody></table></div>
+    </section>
+
+    <section class="chart-panel" aria-labelledby="chart-title">
+      <div class="history-section-head"><div><p class="eyebrow">EVOLUCIÓN</p><h2 id="chart-title">Serie histórica</h2></div><span id="chart-unit"></span></div>
+      <div id="chart-empty" class="chart-empty" hidden>La serie todavía no tiene suficientes años verificados para dibujar una evolución.</div>
+      <svg id="history-chart" viewBox="0 0 900 360" role="img" aria-label="Gráfico de evolución histórica"></svg>
+      <p class="chart-footnote">Los puntos representan el período exacto declarado en cada registro. Una cifra parcial no se convierte artificialmente en valor anual.</p>
+    </section>
+
+    <section class="context-panel" aria-labelledby="context-title"><p class="eyebrow">CONTEXTO DEL PERÍODO</p><h2 id="context-title">Qué estaba ocurriendo</h2><p id="year-context"></p></section>
+
+    <section class="method-grid" aria-labelledby="method-title">
+      <div><p class="eyebrow">METODOLOGÍA</p><h2 id="method-title">Cómo se construirá la historia</h2><p>No se interpolan vacíos ni se mezclan series con bases incompatibles. Cada registro conserva unidad, cobertura, estado y enlace de origen.</p></div>
+      <ol><li><b>01</b><span><strong>Fuente primaria primero</strong>Banco Central, ONE, Crédito Público, Hacienda, DIGEPRES, DGII y Superintendencia de Bancos.</span></li><li><b>02</b><span><strong>Comparabilidad antes que cantidad</strong>Los cambios de base, metodología o cobertura se documentan antes de unir series.</span></li><li><b>03</b><span><strong>Vacíos visibles</strong>“No disponible” significa que el dato aún no está incorporado o no es comparable.</span></li></ol>
+    </section>
+  </main>
+
+  <footer><div><strong>RD DEBT CLOCK</strong><p>Presente, territorio e historia económica con fuentes verificables.</p></div><div class="footer-links"><a href="/">Tablero</a><a href="mapa.html">Mapa</a><a href="boletin.html">Boletín</a><a href="fuentes.html">Fuentes</a><a href="mailto:rddebtclock@gmail.com">Contacto</a></div><span>© 2026 RD Debt Clock · Información, no asesoría financiera.</span></footer>
+</body>
+</html>
