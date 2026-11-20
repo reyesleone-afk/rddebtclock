@@ -17,10 +17,10 @@ for x, top, height in ((72, 90, 22), (92, 78, 34), (112, 68, 44)):
 draw.text((148, 72), "RD", fill="#e9f2f7", font=font(29, bold))
 draw.text((205, 72), "DEBT CLOCK", fill="#18d6e5", font=font(29, bold))
 draw.text((72, 180), "DEUDA PÚBLICA SPNF · REPÚBLICA DOMINICANA", fill="#91a4af", font=font(23, bold))
-draw.text((72, 250), "US$67,649.7 millones", fill="#ff5b62", font=font(74, bold))
-draw.text((72, 360), "46.6% del PIB nominal estimado", fill="#e9f2f7", font=font(30))
+draw.text((72, 250), "US$68,171.1 millones", fill="#ff5b62", font=font(74, bold))
+draw.text((72, 360), "47.0% del PIB · septiembre 2026 · preliminar", fill="#e9f2f7", font=font(30))
 draw.line((72, 445, 1128, 445), fill="#1c303d", width=2)
-draw.text((72, 485), "Corte oficial: 31 de agosto de 2026", fill="#91a4af", font=font(24))
+draw.text((72, 485), "Corte preliminar: 30 de septiembre de 2026", fill="#91a4af", font=font(24))
 draw.text((72, 535), "DATOS OFICIALES · FUENTES VERIFICABLES · SIN FALSA PRECISIÓN", fill="#42d392", font=font(20, bold))
 domain = "rddebtclock.com"
 box = draw.textbbox((0, 0), domain, font=font(24, bold))
