@@ -74,4 +74,4 @@ function renderChart(){
 
 function render(){renderCards();renderComparison();renderChart()}
 
-fetch("data/historia.json").then(response=>{if(!response.ok)throw new Error("No se pudo cargar la base histórica");return response.json()}).then(data=>{state.data=data;setupControls();render()}).catch(error=>{$("history-cards").innerHTML=`<p class="chart-empty">${escapeHtml(error.message)}. Intenta recargar la página.</p>`});
+fetch("data/historia.json?v=20261120",{cache:"no-cache"}).then(response=>{if(!response.ok)throw new Error("No se pudo cargar la base histórica");return response.json()}).then(data=>{state.data=data;setupControls();render()}).catch(error=>{$("history-cards").innerHTML=`<p class="chart-empty">${escapeHtml(error.message)}. Intenta recargar la página.</p>`});
