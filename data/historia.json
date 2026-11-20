@@ -2,7 +2,7 @@
   "meta": {
     "title": "Historia económica de República Dominicana",
     "coverage": "2000–2026",
-    "updated": "2026-11-18",
+    "updated": "2026-11-20",
     "phase": "Base inicial",
     "methodology": "Cada valor conserva su período real. Los datos parciales de 2026 no se presentan como cierres anuales y los vacíos permanecen como no disponibles."
   },
@@ -32,13 +32,13 @@
       "population":{"value":11609500,"period":"2026","status":"estimate","label":"Estimación","source":"ONU — WPP 2024","url":"https://population.un.org/wpp/","note":"Estimación demográfica anual utilizada en los cálculos por habitante."},
       "employment":{"value":5271005,"period":"Abr–Jun 2026","status":"preliminary","label":"Preliminar","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6666","note":"Resultado de la Encuesta Nacional Continua de Fuerza de Trabajo."},
       "unemployment":{"value":5.3,"period":"Abr–Jun 2026","status":"preliminary","label":"Preliminar","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6666","note":"Desocupación abierta del trimestre; no es promedio anual."},
-      "inflation":{"value":5.12,"period":"Sep 2026","status":"official","label":"Oficial","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6694-bcrd-informa-que-la-variacion-mensual-del-ipc-de-septiembre-fue-de-033-","note":"Variación interanual del IPC al cierre de septiembre; no es inflación de diciembre a diciembre."},
+      "inflation":{"value":5.14,"period":"Oct 2026","status":"official","label":"Oficial","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6714-bcrd-informa-que-la-variacion-del-ipc-de-octubre-fue-de-058-","note":"Variación interanual del IPC al cierre de octubre; no es inflación de diciembre a diciembre."},
       "debt_usd":{"value":67649700000,"period":"Ago 2026","status":"official","label":"Oficial","source":"Crédito Público","url":"https://www.creditopublico.gob.do/inicio/novedades?codigo=2026091615","note":"Saldo del Sector Público No Financiero al cierre de agosto."},
       "debt_gdp":{"value":46.6,"period":"Ago 2026 / PIB estimado 2026","status":"derived","label":"Derivado","source":"Crédito Público / cálculo RD Debt Clock","url":"https://www.creditopublico.gob.do/inicio/novedades?codigo=2026091615","note":"Saldo de deuda dividido entre el PIB nominal estimado utilizado por Crédito Público."},
       "remittances":{"value":9489800000,"period":"Ene–Sep 2026","status":"preliminary","label":"Preliminar","source":"BCRD","url":"https://www.bancentral.gov.do/a/d/6691-bcrd-informa-que-los-flujos-de-remesas-alcanzaron-los-us94898-millones-en-el-periodo-eneroseptiembre-de-2026","note":"Flujo acumulado parcial; no es total anual."},
-      "fdi":{"value":3275100000,"period":"Ene–Jun 2026","status":"preliminary","label":"Preliminar revisado","source":"BCRD","url":"https://cdn.bancentral.gov.do/documents/publicaciones-economicas/informe-de-la-economia-dominicana/documents/infeco_definitivo2026-06.pdf","note":"Flujo acumulado del primer semestre."},
+      "fdi":{"value":4525100000,"period":"Ene–Sep 2026","status":"preliminary","label":"Preliminar","source":"BCRD","url":"https://cdn.bancentral.gov.do/documents/publicaciones-economicas/resultados-preliminares-de-la-economia-dominicana/documents/infeco_preliminar2026-09.pdf","note":"Flujo acumulado preliminar de los primeros nueve meses."},
       "reserves":{"value":15047200000,"period":"Oct 2026","status":"preliminary","label":"Preliminar","source":"BCRD","url":"https://cdn.bancentral.gov.do/documents/estadisticas/sector-externo/documents/reservas_internacionales.xlsx","note":"Saldo de reservas internacionales brutas; no promedio anual."},
-      "fx_sell":{"value":61.0459,"period":"4 Nov 2026","status":"official","label":"Oficial","source":"BCRD","url":"https://www.bancentral.gov.do/SectorExterno/HistoricoTasas","note":"Promedio de venta publicado para la fecha indicada; no promedio anual."}
+      "fx_sell":{"value":60.0436,"period":"19 Nov 2026","status":"official","label":"Oficial","source":"BCRD","url":"https://www.bancentral.gov.do/SectorExterno/HistoricoTasas","note":"Promedio de venta publicado para la fecha indicada; no promedio anual."}
     }
   },
   "contexts": {

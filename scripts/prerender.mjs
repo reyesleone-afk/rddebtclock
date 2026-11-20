@@ -25,7 +25,7 @@ html=html.replace(/(<small id="result-count"[^>]*>)[^<]*(<\/small>)/,`$1${data.m
 const [year,month,day]=data.meta.updated.split('-').map(Number);
 const updatedShort=new Intl.DateTimeFormat('es-DO',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(year,month-1,day))).replaceAll('.','');
 html=html.replace(/"dateModified":"\d{4}-\d{2}-\d{2}"/,`"dateModified":"${data.meta.updated}"`);
-html=html.replace(/Actualizado \d{1,2} [a-z]{3} \d{4}/i,`Actualizado ${updatedShort}`);
-html=html.replace(/Última revisión: \d{1,2} [a-z]{3} \d{4}/i,`Última revisión: ${updatedShort}`);
+html=html.replace(/Actualizado \d{1,2} [a-z]{3}(?: de)? \d{4}/i,`Actualizado ${updatedShort}`);
+html=html.replace(/Última revisión: \d{1,2} [a-z]{3}(?: de)? \d{4}/i,`Última revisión: ${updatedShort}`);
 await writeFile(indexUrl,html);
 console.log(`Prerenderizados ${data.metrics.length} indicadores.`);
